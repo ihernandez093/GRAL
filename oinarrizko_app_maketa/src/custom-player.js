@@ -10,7 +10,8 @@ const timerWrapper = document.querySelector('.timer');
 const timer = document.querySelector('.timer span');
 const timerBar = document.querySelector('.timer div');
 
-
+const abiadura=document.querySelector('.speed');
+const loop=document.querySelector('.loop');
 media.removeAttribute('controls');
 controls.style.visibility = 'visible';
 
@@ -126,6 +127,29 @@ function windBackward() {
 		  timerBar.style.width = barLength + 'px';
 		}
 	
+abiadura.addEventListener('click',setAbiadura);
+
+	function setAbiadura(){
+		
+		if (media.playbackRate==1){
+			media.playbackRate=0.5;
+		} else if (media.playback==0.5){
+			media.playbackRate=5.0;
+		}else{
+			media.playbackRate=1;
+		}
+		
+	}
+loop.addEventListener('click',setLoop);
+	
+	function setLoop(){
+		if(media.loop){
+			media.loop=false;
+		}else{
+			media.loop=true;
+		}
+	}
+
 /* play video twice as fast 
 document.querySelector('video').defaultPlaybackRate = 2.0;
 document.querySelector('video').play();
