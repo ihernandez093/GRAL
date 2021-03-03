@@ -1,6 +1,11 @@
 const media = document.querySelector('video');
 const controls = document.querySelector('.controls');
 
+//Hau balioa lortzeko beste webgunetik
+const urlParams = new URLSearchParams(window.location.search);
+const balioa = urlParams.get('balioa');
+
+
 const play = document.querySelector('.play');
 const stop = document.querySelector('.stop');
 const rwd = document.querySelector('.rwd');
@@ -15,6 +20,14 @@ const loop=document.querySelector('.loop');
 media.removeAttribute('controls');
 controls.style.visibility = 'visible';
 
+media.src="video/"+balioa+".mp4"
+
+var elm = 0; var Player = document.getElementById('Player');
+Player.onended = function(){
+    if(++elm < nextsrc.length){         
+         Player.src = nextsrc[elm]; Player.play();
+    } }
+
 play.addEventListener('click', playPauseMedia);
 
 function playPauseMedia() {
@@ -22,6 +35,7 @@ function playPauseMedia() {
 	fwd.classList.remove('active');
 	clearInterval(intervalRwd);
 	clearInterval(intervalFwd);
+	document.getElementById('testua').innerHTML=balioa[2];
 	  if(media.paused) {
 	    play.setAttribute('data-icon','u');
 	    media.play();
@@ -153,11 +167,5 @@ loop.addEventListener('click',setLoop);
 /* play video twice as fast 
 document.querySelector('video').defaultPlaybackRate = 2.0;
 document.querySelector('video').play();
-
-/* now play three times as fast just for the heck of it 
-document.querySelector('video').playbackRate = 3.0;*/
-
+*/
 	
-
-
-
