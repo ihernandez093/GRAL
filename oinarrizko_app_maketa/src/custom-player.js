@@ -1,9 +1,17 @@
 const media = document.querySelector('video');
 const controls = document.querySelector('.controls');
-
+const kop=0;
+let balioak=[];
 //Hau balioa lortzeko beste webgunetik
 const urlParams = new URLSearchParams(window.location.search);
-const balioa = urlParams.get('balioa');
+var nextsrc = [];
+for(var value of urlParams.values()) {
+	  console.log(value);
+	  balioak.push(value);
+	  console.log(balioak);
+	  nextsrc.push("video/"+value+".mp4");
+		console.log(nextsrc);
+	}
 
 
 const play = document.querySelector('.play');
@@ -20,12 +28,23 @@ const loop=document.querySelector('.loop');
 media.removeAttribute('controls');
 controls.style.visibility = 'visible';
 
+const balioa=urlParams.get("balioa");
 media.src="video/"+balioa+".mp4"
 
+
+//https://stackoverflow.com/questions/2551859/html-5-video-or-audio-playlist
+
+/*var nextsrc = [];
+for(var i=0;i<balioak.length;i++){	
+	nextsrc.push("video/"+balioa+".mp4");
+	console.log(nextsrc[i]);
+}
+*/
 var elm = 0; var Player = document.getElementById('Player');
 Player.onended = function(){
     if(++elm < nextsrc.length){         
-         Player.src = nextsrc[elm]; Player.play();
+         Player.src = nextsrc[elm]; 
+         Player.play();
     } }
 
 play.addEventListener('click', playPauseMedia);
