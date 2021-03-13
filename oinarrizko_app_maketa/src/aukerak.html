@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" name="description" content="JavaScript Client Herald">
   <title>Oinarrizko App maketa</title>
-  <link rel="stylesheet" type="text/css" href="src/estiloa.css"/>
+  <link rel="stylesheet" type="text/css" href="./estiloa.css"/>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 <p>
 <h3>Pantaila honetan erabiltzaileari pauso desberdinak aurkeztuko zaizkio, eta berak aukeratuko ditu berak ondoren ikusteko</h3>
 <p>
-<h2>Bideo erreproduktoreak </h2>
+<h2>Bideo erreproduktore desberdinak</h2>
 
 <table class="tableIkustezina">
 	<tr id="thIkusitezina">
@@ -37,15 +37,18 @@
 	</tr>
 </table>
 
+<h2>Bideoak aukeratu eta segidan bistaratu</h2>
 <form action="video_HTML5_M.html" method="GET" target="_self">
 	<select name="balioa" multiple>
-		<option value="1"> 1</option>
-		<option value="2"> 2</option>
-		<option value="3"> 3</option>
-		<option value="4"> 4</option>
+		<option value="A_01_Aurretik"> A_01_Aurretik</option>
+		<option value="A_09_Aurretik">A_09_Aurretik</option>
+		<option value="B_01_Aurretik">B_01_Aurretik</option>
+		<option value="B_07_2_Aurretik">B_07_2_Aurretik</option>
+		<option value="C_01_A_Aurretik">C_01_A_Aurretik</option>
+		<option value="C_Bikotean_04">C_Bikotean_04</option>
 	</select>	
 	<br>
-	<input type="submit" value="Submit"/>
+	<input type="submit" value="Bideoa Bistaratu"/>
 </form>
 
 <h2>Audio erreproduktorea </h2>
@@ -53,7 +56,14 @@
 	<tr id="thIkusitezina">
 		<td id="tdIkustezina">
 			<form action="audio.html">
-				<input type="submit" value="HTML5 erabiliz">
+				<select name="balioa">
+				<option value="A"> A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+				<option value="OSOA">OSOA</option>
+			</select>	
+			<br>
+			<input type="submit" value="Audioa erreproduzitu"/>
 			</form>
 		</td>	
 	</tr>

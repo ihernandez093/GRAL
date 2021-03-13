@@ -10,6 +10,9 @@
 
 video {
   border: 1px solid black;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 p {
@@ -18,18 +21,25 @@ p {
 }
 
 .player {
-  position: absolute;
+	position:absolute;
+    margin-left: 12.5%;
+    width: 75%;
+
 }
 
+/*width: 400px; 
+  margin-left: -200px; */
 .controls {
   visibility: hidden;
   opacity: 0.5;
-  width: 400px;
+  margin-left: 2.5%;
+  width: 95%;
+  
   border-radius: 10px;
   position: absolute;
   bottom: 20px;
-  left: 50%;
-  margin-left: -200px;
+  /*left: 50%;*/
+
   background-color: black;
   box-shadow: 3px 3px 5px black;
   transition: 1s all;
@@ -116,4 +126,8 @@ button:active {
 
 .active:before {
   color: red;
+}
+
+video::-webkit-media-controls {
+  display: none;
 }
