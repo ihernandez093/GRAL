@@ -5,6 +5,7 @@
   <meta charset="utf-8" name="description" content="JavaScript Client Herald">
   <title>Oinarrizko App maketa</title>
   <link rel="stylesheet" type="text/css" href="./estiloa.css"/>
+  <script src="aukerak.js"></script>
 </head>
 
 <body>
@@ -38,18 +39,41 @@
 </table>
 
 <h2>Bideoak aukeratu eta segidan bistaratu</h2>
-<form action="video_HTML5_M.html" method="GET" target="_self">
-	<select name="balioa" multiple>
-		<option value="A_01_Aurretik"> A_01_Aurretik</option>
-		<option value="A_09_Aurretik">A_09_Aurretik</option>
-		<option value="B_01_Aurretik">B_01_Aurretik</option>
-		<option value="B_07_2_Aurretik">B_07_2_Aurretik</option>
-		<option value="C_01_A_Aurretik">C_01_A_Aurretik</option>
-		<option value="C_Bikotean_04">C_Bikotean_04</option>
-	</select>	
-	<br>
-	<input type="submit" value="Bideoa Bistaratu"/>
-</form>
+
+	<form action="video_HTML5_M.html" method="GET" target="_self">
+	<table class="tableIkustezina">
+		<tr>
+			<th>A</th><th>B</th><th>C</th>
+		</tr>		
+		<tr>
+			<td>
+				<input type="checkbox" name="balioa" onclick="egiaztatu(value)" value="A_01_Aurretik">A_01_Aurretik   <p id="A_01_Aurretik"></p><br>
+		  		<input type="checkbox" name="balioa" onclick="egiaztatu(value)" value="A_09_Aurretik">A_09_Aurretik  <p id="A_09_Aurretik"></p><br>
+			</td>
+			<td>
+				<input type="checkbox" name="balioa" onclick="egiaztatu(value)" value="B_01_Aurretik">B_01_Aurretik <p id="B_01_Aurretik"></p><br>
+		  		<input type="checkbox" name="balioa" onclick="egiaztatu(value)" value="B_07_2_Aurretik">B_07_2_Aurretik <p id="B_07_2_Aurretik"></p><br>	
+			</td>
+			<td>
+				<input type="checkbox" name="balioa" onclick="egiaztatu(value)" value="C_01_A_Aurretik">C_01_A_Aurretik <p id="C_01_A_Aurretik"></p><br>
+		  		<input type="checkbox" name="balioa" onclick="egiaztatu(value)" value="C_Bikotean_04">C_Bikotean_04 <p id="C_Bikotean_04"></p><br><br>
+			</td>
+		</tr>
+	  </table>
+	  <input type="submit" value="Bideoa Bistaratu">
+  </form>
+<!-- <form action="video_HTML5_M.html" method="GET" target="_self"> -->
+<!-- 	<select name="balioa" multiple> -->
+<!-- 		<option value="A_01_Aurretik"> A_01_Aurretik</option> -->
+<!-- 		<option value="A_09_Aurretik">A_09_Aurretik</option> -->
+<!-- 		<option value="B_01_Aurretik">B_01_Aurretik</option> -->
+<!-- 		<option value="B_07_2_Aurretik">B_07_2_Aurretik</option> -->
+<!-- 		<option value="C_01_A_Aurretik">C_01_A_Aurretik</option> -->
+<!-- 		<option value="C_Bikotean_04">C_Bikotean_04</option> -->
+<!-- 	</select>	 -->
+<!-- 	<br> -->
+<!-- 	<input type="submit" value="Bideoa Bistaratu"/> -->
+<!-- </form> -->
 
 <h2>Audio erreproduktorea </h2>
 <table class="tableIkustezina">
