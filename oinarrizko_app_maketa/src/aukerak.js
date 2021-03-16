@@ -5,6 +5,13 @@ var querystring="video_HTML5_M.html?";
 var aBalio= [];
 var i=0;
 
+
+//orrialdea kargatzerakoan aukeratutako guztiak destxekeatu
+$().ready(function() {
+    //on page load uncheck any ticked checkboxes
+    $("input:checkbox:checked").attr("checked", "");
+});
+
 function egiaztatu (balioa){
 	var testua= document.getElementById(balioa).innerHTML;
 	if(testua==null||testua==""){
@@ -44,6 +51,15 @@ function pantailara(array){
 	}
 }
 
+
+function ugariAukeratu(balioa){
+	var elementuak=document.getElementsByClassName(balioa);
+	console.log("elementua:"+elementuak.length);
+	console.log("balioa:"+balioa);
+	for(var v=0; v<elementuak.length;v++){
+		elementuak[v].click();
+	}
+}
 
 
 

@@ -34,7 +34,6 @@ controls.style.visibility = 'visible';
 
 const balioa=urlParams.get("balioa");
 media.src="video/"+balioa+".mp4"
-document.getElementById("izena").innerHTML =balioa;
 
 
 //https://stackoverflow.com/questions/2551859/html-5-video-or-audio-playlist
@@ -108,7 +107,7 @@ function hurrengoa(){
 }
 
 function berria(elm){
-	document.getElementById("izena").innerHTML =balioak[elm];
+	nagusia(elm,balioak);
 	media.src = nextsrc[elm];
 	media.load();
 	media.play();
@@ -294,11 +293,74 @@ if (media.hasAttribute("controls")) {
     media.removeAttribute("controls")   
 }
 
-function newFunction() {
-    ;
-}
+
 /* play video twice as fast 
 document.querySelector('video').defaultPlaybackRate = 2.0;
 document.querySelector('video').play();
 */
+
+
+
+
+//Aukeratutako bideoen zerrenda erakutsi pantaila eraksuterakoan
+
+document.body.onload = elementuaGehitu(balioak);
+
+function elementuaGehitu (balioakSartu) {
+	var currentDiv = document.getElementById("hasiera");
+	var n=0;
+	  
+  var newContent=[]
+  for(var v=0;v<balioakSartu.length;v++){
+	  newContent[v]=document.createElement("h4");
+	  newContent[v].id=balioakSartu[v];
+	  newContent[v].setAttribute("onclick","erakutsi(id)");
+	  n=v+1;
+	  newContent[v].innerHTML=n+"."+balioakSartu[v];
+	  currentDiv.appendChild(newContent[v]);
+  }
+  nagusia(0,balioakSartu);
+}
+
+function nagusia(elem,balioakSartu){
+	var elementua;
+	for(var v=0;v<balioakSartu.length;v++){
+		if(v==elem){
+			elementua = document.getElementById(balioakSartu[v]);
+			elementua.style.fontWeight="bold";
+		}
+		else{
+			elementua = document.getElementById(balioakSartu[v]);
+			elementua.style.fontWeight="normal";
+			
+		}
+	}
+	
+}
+
+function erakutsi(value){
+	elm=balioak.indexOf(value);
+	berria(elm);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
