@@ -1,3 +1,7 @@
+const submit = document.querySelector('.submit');
+var querystring="video_HTML5_M.html?";
+
+
 var aBalio= [];
 var i=0;
 
@@ -39,3 +43,34 @@ function pantailara(array){
 		document.getElementById(array[v]).innerHTML=v+1;
 	}
 }
+
+
+
+
+//QueryString-a bidali
+function queryh(){
+	if(aBalio.length==0){
+		document.getElementById("alerta").innerHTML="Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!";
+	}
+	else{
+		document.getElementById("alerta").innerHTML=null;
+		aldatu();
+		console.log(querystring);
+		window.location.href = querystring;
+	}
+	
+}
+
+function aldatu(){
+	querystring=querystring+"balioa="+aBalio[0];
+	for(var a=1;a<aBalio.length;a++){
+		querystring=querystring+"&balioa="+aBalio[a];
+	}
+}
+
+
+
+
+
+
+
