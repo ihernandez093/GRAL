@@ -15,6 +15,7 @@ for(var value of urlParams.values()) {
 	}
 
 
+
 const play = document.querySelector('.play');
 const stop = document.querySelector('.stop');
 const rwd = document.querySelector('.rwd');
@@ -112,7 +113,7 @@ function berria(elm){
 	media.load();
 	media.play();
 	//fetchVideoAndPlay(nextsrc[elm]);
-	console.log("Elm:"+elm);
+	console.log("Elm:"+elm+" Src:"+media.src);
 
 }
 /*
@@ -307,21 +308,40 @@ document.querySelector('video').play();
 document.body.onload = elementuaGehitu(balioak);
 
 function elementuaGehitu (balioakSartu) {
-	var currentDiv = document.getElementById("hasiera");
+	var currentDiv = document.getElementById("lista");
 	var n=0;
 	  
-  var newContent=[]
+  var listaIzena=[];
+  var gora=[];
+  var behera=[]; 
   for(var v=0;v<balioakSartu.length;v++){
-	  newContent[v]=document.createElement("h4");
-	  newContent[v].id=balioakSartu[v];
-	  newContent[v].setAttribute("onclick","erakutsi(id)");
+	  //lista izena gehitu dokumentura 
+	  listaIzena[v]=document.createElement("h4");
+	  listaIzena[v].id=balioakSartu[v];
+	  listaIzena[v].setAttribute("onclick","erakutsi(id)");
 	  n=v+1;
-	  newContent[v].innerHTML=n+"."+balioakSartu[v];
-	  currentDiv.appendChild(newContent[v]);
+	  listaIzena[v].innerHTML=n+"."+balioakSartu[v];
+	  currentDiv.appendChild(listaIzena[v]);
+	  //gora botoia gehitu
+	  	  
+	  gora[v]=document.createElement("button");
+	  gora[v].value=balioakSartu[v];
+	  gora[v].setAttribute("onclick","igo(value)");
+	  gora[v].className="gora";
+	  gora[v].innerHTML="Igo";
+	  currentDiv.appendChild(gora[v]);
+	  //behera botoia gehitu
+	  behera[v]=document.createElement("button");
+	  behera[v].value=balioakSartu[v];
+	  behera[v].setAttribute("onclick","jeitsi(value)");
+	  behera[v].className="behera";
+	  behera[v].innerHTML="Jeitsi";
+	  currentDiv.appendChild(behera[v]);
   }
   nagusia(0,balioakSartu);
 }
 
+//Erreproduzitzen ari den balioa beltzen jarri
 function nagusia(elem,balioakSartu){
 	var elementua;
 	for(var v=0;v<balioakSartu.length;v++){
@@ -338,17 +358,77 @@ function nagusia(elem,balioakSartu){
 	
 }
 
+//ikusi nahiden bideoaren balioa pasa eta bistaratu
 function erakutsi(value){
 	elm=balioak.indexOf(value);
 	berria(elm);
 }
 
 
+//bideo bat listan goran egin
+function igo(value){
+	elm=balioak.indexOf(value);
+	if(elm!=0){
+	console.log("gora:"+array_move(balioak,elm,elm-1));
+	divEzabatu();
+	elementuaGehitu(balioak);
+	balioakPasa();
+	}	
+}
+
+//bideo bat listan behera egin
+function jeitsi(value){
+	elm=balioak.indexOf(value);
+	if(elm!=balioak.length-1){
+		console.log("gora:"+array_move(balioak,elm,elm+1));
+		divEzabatu();
+		elementuaGehitu(balioak);
+		balioakPasa();
+	}
+	
+}
+
+//JavaScripten array batean elementuak toki abtetik bestera mugitzeko funtzioa
+function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
+
+//Bideo zerrenda ezabatu
+function divEzabatu(){
+	var nereDiv=document.getElementById("lista");
+	nereDiv.innerHTML='';
+}
 
 
+//balioak array-a nextsrc-ra pasa
+
+function balioakPasa(){
+	for(var v=0;v<balioak.length;v++){
+		nextsrc[v]="video/"+balioak[v]+".mp4";
+	}
+	console.log(nextsrc);
+	elm=0
+	berriaGeldirik(elm);
+	
+}
 
 
+function berriaGeldirik(elm){
+	nagusia(elm,balioak);
+	media.src = nextsrc[elm];
+	media.load();
+	stopMedia();
+	//fetchVideoAndPlay(nextsrc[elm]);
+	console.log("Elm:"+elm+" Src:"+media.src);
 
+}
 
 
 

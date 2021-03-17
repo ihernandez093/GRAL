@@ -131,3 +131,8 @@ button:active {
 video::-webkit-media-controls {
   display: none;
 }
+
+.gora,.behera {
+	box-shadow: null;
+	background: white;
+}
