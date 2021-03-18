@@ -476,7 +476,7 @@ function gehituArraySortu(){
 	gehitu=[];
 	gehitu=pausuak.filter(x => balioak.indexOf(x) === -1)
 	console.log("GehituSortu:"+gehitu);
-}
+}f
 
 function gehituPausua(value){
 	balioak.push(value)
