@@ -132,7 +132,7 @@ video::-webkit-media-controls {
   display: none;
 }
 
-.gora,.behera {
+.gora,.behera,.kendu {
 	box-shadow: null;
 	background: white;
 }
