@@ -22,6 +22,8 @@
  <div style="text-align:center" id="gehitu">
  	<select id="gehituSelect">
  	</select>
+ 	<button id="gehituButton" onclick="gehituPausua()">Gehitu</button>
+ 	
  </div>
     <div class="player">
       <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
@@ -29,9 +31,10 @@
         <button class="play" data-icon="P" aria-label="play pause toggle"></button>
         <button class="stop" data-icon="S" aria-label="stop"></button>
         <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
+        <button class="mute" data-icon="Q" onclick="setMute()" aria-label="mute"></button>
         <button class="speed" data-icon="W" aria-label="speed"></button>
         <button class="loop" data-icon="U" aria-label="loop"></button>
-        <button class="full" data-icon="J" onclick="fullScreen()" aria-label="fast forward"></button>
+        <button class="full" data-icon="M" onclick="fullScreen()" aria-label="fast forward"></button>
         <button class="rwd" data-icon="B" aria-label="rewind"></button>
         <button class="fwd" data-icon="F" aria-label="fast forward"></button>
         

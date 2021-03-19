@@ -1,6 +1,7 @@
 const media = document.querySelector('video');
 const controls = document.querySelector('.controls');
 const kop=0;
+
 let balioak=[];
 
 var pausuak=[ "A_01_Aurretik", "A_09_Aurretik", "B_01_Aurretik", "B_07_2_Aurretik", "C_01_A_Aurretik", "C_Bikotean_04" ];
@@ -33,6 +34,8 @@ const timerBar = document.querySelector('.timer div');
 const abiadura=document.querySelector('.speed');
 const loop=document.querySelector('.loop');
 const full=document.querySelector('.full');
+const mute=document.querySelector('.mute');
+var ixildu=0;
 
 
 media.removeAttribute('controls');
@@ -304,6 +307,27 @@ if (media.hasAttribute("controls")) {
 document.querySelector('video').defaultPlaybackRate = 2.0;
 document.querySelector('video').play();
 */
+//Bideoari ahotsa kendu
+mute.addEventListener('click',setMute());
+	function setMute(){
+		
+		console.log("Mute:"+ixildu);
+		if(ixildu==0){
+			media.muted=false;
+			ixildu=1;
+		}else{			
+			media.muted=true;
+			ixildu=0;
+		}
+		console.log("Mute:"+ixildu);
+	}
+
+
+
+
+
+
+
 
 
 
@@ -467,7 +491,6 @@ function gehituBistaratu(){
 	for(var v=0;v<gehitu.length;v++){
 		//console.log("HEMEN  gehitu.length:"+gehitu.length+" v:"+v);
 		gehituSelect.options[v]=new Option(gehitu[v],gehitu[v]);
-		gehituSelect.options[v].setAttribute("onclick","gehituPausua(value)");
 	}
 	  
 }
@@ -476,14 +499,17 @@ function gehituArraySortu(){
 	gehitu=[];
 	gehitu=pausuak.filter(x => balioak.indexOf(x) === -1)
 	console.log("GehituSortu:"+gehitu);
-}f
+}
 
-function gehituPausua(value){
-	balioak.push(value)
-	console.log("gehituPausua:"+value+" balioa:"+balioak);
-	divEzabatu();
-	elementuaGehitu(balioak);
-	balioakPasa();
+function gehituPausua(){
+	var value =document.getElementById("gehituSelect").value;     	
+	if((value!=null)&&(value!="")){
+		balioak.push(value)
+		console.log("gehituPausua:"+value+" balioa:"+balioak);
+		divEzabatu();
+		elementuaGehitu(balioak);
+		balioakPasa();
+	}
 }
 
 function gehituOptUstu(){

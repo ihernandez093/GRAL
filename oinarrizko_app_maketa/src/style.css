@@ -132,7 +132,7 @@ video::-webkit-media-controls {
   display: none;
 }
 
-.gora,.behera,.kendu {
+.gora,.behera,.kendu ,#gehituButton{
 	box-shadow: null;
 	background: white;
 }
