@@ -60,7 +60,27 @@ function bukatu(){
 	setTimeout(() => {hurrengoa();}, 5);
      }
 
-play.addEventListener('click', playPauseMedia);
+play.addEventListener('click', playPause);
+
+function playPause(){
+	var countdown=document.getElementById("countdownId");
+	if((countdown.checked)&&(media.paused)){
+		var timeleft = document.getElementById("countdownValue").value;
+		var downloadTimer = setInterval(function(){
+		  if(timeleft <= 0){
+		    clearInterval(downloadTimer);
+		    document.getElementById("countdownText").innerHTML = "";
+		    playPauseMedia();
+		  } else {
+		    document.getElementById("countdownText").innerHTML = timeleft;
+		  }
+		  timeleft -= 1;
+		}, 1000);
+	}
+	else{
+		playPauseMedia();
+	}
+}
 
 function playPauseMedia() {
 	rwd.classList.remove('active');
@@ -321,8 +341,6 @@ mute.addEventListener('click',setMute());
 		}
 		console.log("Mute:"+ixildu);
 	}
-
-
 
 
 

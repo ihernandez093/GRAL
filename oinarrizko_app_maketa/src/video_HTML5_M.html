@@ -22,8 +22,16 @@
  <div style="text-align:center" id="gehitu">
  	<select id="gehituSelect">
  	</select>
- 	<button id="gehituButton" onclick="gehituPausua()">Gehitu</button>
- 	
+ 	<button id="gehituButton" onclick="gehituPausua()">Gehitu</button>	
+ </div>
+ <div style="text-align:center"id="countdownDiv">
+ <input type="number" id="countdownValue" name="tentacles" value="5"
+       min="1" max="15">
+ <label class="switch">
+  <input type="checkbox" id="countdownId">
+  <span class="slider round"></span> 
+</label>
+	<p id="countdownText"></p>
  </div>
     <div class="player">
       <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
