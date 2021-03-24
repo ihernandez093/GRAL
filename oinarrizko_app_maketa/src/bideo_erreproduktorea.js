@@ -142,6 +142,15 @@ function berria(elm){
 	media.play();
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src);
+}
+
+function berriaB(elm){
+	nagusia(elm,balioak);
+	media.src = nextsrc[elm];
+	media.load();
+	playPause();
+	//fetchVideoAndPlay(nextsrc[elm]);
+	console.log("Elm:"+elm+" Src:"+media.src);
 
 }
 /*
@@ -361,36 +370,53 @@ function elementuaGehitu (balioakSartu) {
   var gora=[];
   var behera=[]; 
   var kendu=[];
+  var nextDiv=[];
+  var bideoDiv=[];
+  var botoiDiv=[];
   
   for(var v=0;v<balioakSartu.length;v++){
+	  
+	  nextDiv[v]=document.createElement("div");
+	  nextDiv[v].className=balioakSartu[v]+" bideoAukera";
 	  //lista izena gehitu dokumentura 
-	  listaIzena[v]=document.createElement("h4");
+	  bideoDiv[v]=document.createElement("div");
+	  bideoDiv[v].className="bideoLista";
+	  listaIzena[v]=document.createElement("p");
 	  listaIzena[v].id=balioakSartu[v];
 	  listaIzena[v].setAttribute("onclick","erakutsi(id)");
 	  n=v+1;
 	  listaIzena[v].innerHTML=n+"."+balioakSartu[v];
-	  currentDiv.appendChild(listaIzena[v]);
-	  //gora botoia gehitu	  	  
-	  gora[v]=document.createElement("button");
+	  bideoDiv[v].appendChild(listaIzena[v]);
+	  nextDiv[v].appendChild(bideoDiv[v]);
+	  
+	  //gora botoia gehitu	 
+	  botoiDiv[v]=document.createElement("div");
+	  botoiDiv[v].className="botoiLista";
+	  gora[v]=document.createElement("i");
 	  gora[v].value=balioakSartu[v];
 	  gora[v].setAttribute("onclick","igo(value)");
-	  gora[v].className="gora";
-	  gora[v].innerHTML="Igo";
-	  currentDiv.appendChild(gora[v]);
+	  gora[v].className="gora fas fa-chevron-up fa-lg";
+	  //gora[v].innerHTML="Igo";
+	  botoiDiv[v].appendChild(gora[v]);
+	  
 	  //behera botoia gehitu
-	  behera[v]=document.createElement("button");
+	  behera[v]=document.createElement("i");
 	  behera[v].value=balioakSartu[v];
 	  behera[v].setAttribute("onclick","jeitsi(value)");
-	  behera[v].className="behera";
-	  behera[v].innerHTML="Jeitsi";
-	  currentDiv.appendChild(behera[v]);
+	  behera[v].className="behera fas fa-chevron-down fa-lg";
+	  //behera[v].innerHTML="Jeitsi";
+	  botoiDiv[v].appendChild(behera[v]);
+	  
+	  
 	  //
-	  kendu[v]=document.createElement("button");
+	  kendu[v]=document.createElement("i");
 	  kendu[v].value=balioakSartu[v];
 	  kendu[v].setAttribute("onclick","kenduPausua(value)");
-	  kendu[v].className="kendu";
-	  kendu[v].innerHTML="Kendu";
-	  currentDiv.appendChild(kendu[v]);
+	  kendu[v].className="kendu fas fa-minus fa-lg";
+	  //kendu[v].innerHTML="Kendu";
+	  botoiDiv[v].appendChild(kendu[v]);
+	  nextDiv[v].appendChild(botoiDiv[v]);
+	  currentDiv.appendChild(nextDiv[v]);
   }
   gehituBistaratu();
   nagusia(0,balioakSartu);
@@ -416,7 +442,7 @@ function nagusia(elem,balioakSartu){
 //ikusi nahiden bideoaren balioa pasa eta bistaratu
 function erakutsi(value){
 	elm=balioak.indexOf(value);
-	berria(elm);
+	berriaB(elm);
 }
 
 
@@ -498,7 +524,6 @@ function berriaGeldirik(elm){
 }
 
 function gehituBistaratu(){
-	var optionB=[];
 	var gehituSelect = document.getElementById("gehituSelect");
 	gehituArraySortu();
 	gehituOptUstu();

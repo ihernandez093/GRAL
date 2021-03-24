@@ -1,3 +1,7 @@
+*{
+	font-family: helvetica;
+}
+
 @font-face {
     font-family: 'HeydingsControlsRegular';
     src: url('fonts/heydings_controls-webfont.eot');
@@ -20,11 +24,22 @@ video {
   top: 310px;
 }*/
 
+.wrapper{
+	width:100%;
+	overflow: hidden;
+	left:1%;
+	position:relative;
+	
+}
 .player {
-	position:absolute;
-    margin-left: 12.5%;
-    width: 75%;
+    width: 70%;
+    float:left;
 
+}
+
+.lista{
+	width:28%;
+	float:left;
 }
 
 /*width: 400px; 
@@ -32,12 +47,13 @@ video {
 .controls {
   visibility: hidden;
   opacity: 0.5;
-  margin-left: 2.5%;
   width: 95%;
   
   border-radius: 10px;
-  position: absolute;
-  bottom: 20px;
+  bottom: 60px;
+  left:2%;
+  position: relative;
+
   /*left: 50%;*/
 
   background-color: black;
@@ -132,10 +148,7 @@ video::-webkit-media-controls {
   display: none;
 }
 
-.gora,.behera,.kendu ,#gehituButton{
-	box-shadow: null;
-	background: white;
-}
+
 
 
 
@@ -202,4 +215,31 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+/*BOTOIAK*/
+.bideoAukera{
+	width:100%;
+	overflow: hidden;
+}
+.bideoLista{
+    width: 65%;
+    float:left;
+    left:5%;
+    position:relative;
+}
+
+.botoiLista{
+	float:left;
+	position:relative;
+	padding-top:5%
+}
+#gehituButton{
+	background:white;
+}
+
+.gora,.behera,.kendu ,#gehituButton{
+	padding-left: 8px;
+
 }

@@ -4,6 +4,7 @@
   	<meta charset="utf-8">
   	<title>Oinarrizko App maketa</title>
   	<link rel="stylesheet" type="text/css" href="style.css">
+  	<link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.2-web/css/all.css">
 
   
   </head>
@@ -17,39 +18,44 @@
 	 <h2>Pauso erreproduktorea </h2>
 	 <h3 id="izena"></h3>
  </div >
- <div style="text-align:center" id="lista">
- </div>
- <div style="text-align:center" id="gehitu">
- 	<select id="gehituSelect">
- 	</select>
- 	<button id="gehituButton" onclick="gehituPausua()">Gehitu</button>	
- </div>
+
+ 
  <div style="text-align:center"id="countdownDiv">
- <input type="number" id="countdownValue" name="tentacles" value="5"
+ 	Countdown:<input type="number" id="countdownValue" name="tentacles" value="5"
        min="1" max="15">
- <label class="switch">
-  <input type="checkbox" id="countdownId">
-  <span class="slider round"></span> 
-</label>
+	 <label class="switch">
+	  <input type="checkbox" id="countdownId">
+	  <span class="slider round"></span> 
+	</label>
 	<p id="countdownText"></p>
  </div>
-    <div class="player">
-      <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
-      <div class="controls">
-        <button class="play" data-icon="P" aria-label="play pause toggle"></button>
-        <button class="stop" data-icon="S" aria-label="stop"></button>
-        <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
-        <button class="mute" data-icon="Q" onclick="setMute()" aria-label="mute"></button>
-        <button class="speed" data-icon="W" aria-label="speed"></button>
-        <button class="loop" data-icon="U" aria-label="loop"></button>
-        <button class="full" data-icon="M" onclick="fullScreen()" aria-label="fast forward"></button>
-        <button class="rwd" data-icon="B" aria-label="rewind"></button>
-        <button class="fwd" data-icon="F" aria-label="fast forward"></button>
-        
-      </div>
-    </div>
-<br>
-
+ <div class="wrapper">
+	    <div class="player">
+	      <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
+	      <div class="controls">
+	        <button class="play" data-icon="P" aria-label="play pause toggle"></button>
+	        <button class="stop" data-icon="S" aria-label="stop"></button>
+	        <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
+	        <button class="mute" data-icon="Q" onclick="setMute()" aria-label="mute"></button>
+	        <button class="speed" data-icon="W" aria-label="speed"></button>
+	        <button class="loop" data-icon="U" aria-label="loop"></button>
+	        <button class="full" data-icon="M" onclick="fullScreen()" aria-label="fast forward"></button>
+	        <button class="rwd" data-icon="B" aria-label="rewind"></button>
+	        <button class="fwd" data-icon="F" aria-label="fast forward"></button>
+	        
+	      </div>
+	    </div>
+	     <div class="lista" id="lista">
+	     
+	 	</div> 
+	 	<div style="text-align:center ;padding-top: 5%;" id="gehitu">
+		 	<select id="gehituSelect">
+		 	</select>		 
+<!-- 		 	<button ">Gehitu</button>	 -->
+		 	<i  id="gehituButton"  onclick="gehituPausua()" class="fas fa-plus fa-lg"></i>
+		 </div>
+	 	
+ </div>
       <script src="bideo_erreproduktorea.js"></script>
   </body>
 </html>
