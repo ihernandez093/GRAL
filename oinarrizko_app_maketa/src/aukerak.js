@@ -5,6 +5,9 @@ var querystring="video_HTML5_M.html?";
 var aBalio= [];
 var i=0;
 
+//document.body.onloadstart=divBistaratu('bideoAukeratu','audioAukeratu');
+//document.addEventListener('DOMContentLoaded', divBistaratu('bideoAukeratu','audioAukeratu'), false);
+
 
 //orrialdea kargatzerakoan aukeratutako guztiak destxekeatu
 $().ready(function() {
@@ -84,6 +87,14 @@ function aldatu(){
 	}
 }
 
+function divBistaratu(bistaratu,ezkutatu){
+	console.log("bistaratu:"+bistaratu+" Ezkutatu:"+ezkutatu)
+	var bistaratuDiv=document.getElementById(bistaratu);
+	var ezkutatuDiv=document.getElementById(ezkutatu);
+	bistaratuDiv.className="bistaratu";
+	ezkutatuDiv.className="ezkutatu";
+	
+}
 
 
 
