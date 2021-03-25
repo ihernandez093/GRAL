@@ -96,6 +96,34 @@ function divBistaratu(bistaratu,ezkutatu){
 	
 }
 
+function divBideo(){
+	console.log("bistaratu: bideoAukeratu  Ezkutatu:audioAukeratu");
+	var bideo=document.getElementById('bideoAukeratu');
+	var audio=document.getElementById('audioAukeratu');
+	var bideoLi=document.getElementById('bideoLi');
+	var audiioLi=document.getElementById('audioLi');
+	
+	bideo.className="bistaratu";
+	audio.className="ezkutatu";	
+	
+	bideoLi.className='is-active';
+	audioLi.className='';
+}
+
+function divAudio(){
+	console.log("bistaratu:audioAukeratu   Ezkutatu:bideoAukeratu");
+	var bideo=document.getElementById('bideoAukeratu');
+	var audio=document.getElementById('audioAukeratu');
+	var bideoLi=document.getElementById('bideoLi');
+	var audiioLi=document.getElementById('audioLi');
+	
+	audio.className="bistaratu";
+	bideo.className="ezkutatu";	
+	
+	bideoLi.className='';
+	audioLi.className='is-active';
+}
+
 
 
 

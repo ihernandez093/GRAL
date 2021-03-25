@@ -1,4 +1,4 @@
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
 
 *{
 	font-family: helvetica;
@@ -15,16 +15,16 @@
 }
 
 video {
-  border: 1px solid black;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  /*border: 1px solid black;*/
+/*   width: 100%; */
+/*   margin-left: auto; */
+/*   margin-right: auto; */
 }
 
 /*p {
   position: absolute;
   top: 310px;
-}*/
+}
 
 .wrapper{
 	width:100%;
@@ -43,6 +43,7 @@ video {
 	width:28%;
 	float:left;
 }
+*/
 
 /*width: 400px; 
   margin-left: -200px; */
@@ -219,7 +220,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/*BOTOIAK*/
+/*BOTOIAK
 .bideoAukera{
 	width:100%;
 	overflow: hidden;
@@ -244,6 +245,7 @@ input:checked + .slider:before {
 	padding-left: 8px;
 
 }
+*/
 
 
 

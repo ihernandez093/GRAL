@@ -373,15 +373,16 @@ function elementuaGehitu (balioakSartu) {
   var nextDiv=[];
   var bideoDiv=[];
   var botoiDiv=[];
+  var level=[];
   
   for(var v=0;v<balioakSartu.length;v++){
-	  
-	  nextDiv[v]=document.createElement("div");
-	  nextDiv[v].className=balioakSartu[v]+" bideoAukera";
+	  nextDiv[v]=document.createElement("nav");
+	  nextDiv[v].className=balioakSartu[v]+" level is-mobile bideoAukera";
 	  //lista izena gehitu dokumentura 
 	  bideoDiv[v]=document.createElement("div");
-	  bideoDiv[v].className="bideoLista";
+	  bideoDiv[v].className="level-left bideoLista";
 	  listaIzena[v]=document.createElement("p");
+	  listaIzena[v].className="level-item is-clickable";
 	  listaIzena[v].id=balioakSartu[v];
 	  listaIzena[v].setAttribute("onclick","erakutsi(id)");
 	  n=v+1;
@@ -391,11 +392,11 @@ function elementuaGehitu (balioakSartu) {
 	  
 	  //gora botoia gehitu	 
 	  botoiDiv[v]=document.createElement("div");
-	  botoiDiv[v].className="botoiLista";
+	  botoiDiv[v].className="level-right botoiLista";
 	  gora[v]=document.createElement("i");
 	  gora[v].value=balioakSartu[v];
 	  gora[v].setAttribute("onclick","igo(value)");
-	  gora[v].className="gora fas fa-chevron-up fa-lg";
+	  gora[v].className="level-item is-clickable gora fas fa-chevron-up fa-lg";
 	  //gora[v].innerHTML="Igo";
 	  botoiDiv[v].appendChild(gora[v]);
 	  
@@ -403,7 +404,7 @@ function elementuaGehitu (balioakSartu) {
 	  behera[v]=document.createElement("i");
 	  behera[v].value=balioakSartu[v];
 	  behera[v].setAttribute("onclick","jeitsi(value)");
-	  behera[v].className="behera fas fa-chevron-down fa-lg";
+	  behera[v].className="is-clickable level-item behera fas fa-chevron-down fa-lg";
 	  //behera[v].innerHTML="Jeitsi";
 	  botoiDiv[v].appendChild(behera[v]);
 	  
@@ -412,7 +413,7 @@ function elementuaGehitu (balioakSartu) {
 	  kendu[v]=document.createElement("i");
 	  kendu[v].value=balioakSartu[v];
 	  kendu[v].setAttribute("onclick","kenduPausua(value)");
-	  kendu[v].className="kendu fas fa-minus fa-lg";
+	  kendu[v].className="is-clickable level-item kendu fas fa-minus fa-lg";
 	  //kendu[v].innerHTML="Kendu";
 	  botoiDiv[v].appendChild(kendu[v]);
 	  nextDiv[v].appendChild(botoiDiv[v]);
