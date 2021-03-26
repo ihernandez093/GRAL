@@ -52,9 +52,8 @@
 				<nav class="level is-mobile mt-0">
 					  <!-- Left side -->
 					<div class="level-item" >
-					 	<p class="subtitle is-5">Countdown: </p> 
-					 	
-					 	<input class="ml-4" type="number" id="countdownValue" name="tentacles" value="5" min="1" max="15">	
+					 	<p class="subtitle is-4">Countdown: </p> 					 	
+					 	<input class="ml-4" type="number" style="width: 70px" id="countdownValue" name="tentacles" value="5" min="1" max="15">	
 						<label class="switch ml-4">
 							<input type="checkbox" id="countdownId">
 							<span class="slider round"></span> 
@@ -68,14 +67,11 @@
 		   	<div class="lista mt-4" id="lista"></div>
 
 		   	<nav class="level is-mobile mt-4">
-				  <!-- Left side -->
-				  <div class="level-left select is-rounded" id="gehitu">
-					 	<select class="level-item " id="gehituSelect">
-					 	</select>			 			 
-				 	
-					</div>				
-					  <!-- Right side -->
-				  <div class="level-right">
+				  <div class="level-item select" id="gehitu">
+					 	<select id="gehituSelect">
+					 	</select>
+					</div>
+					<div>				 	
 				   <i  id="gehituButton"  onclick="gehituPausua()" class="is-clickable fas fa-plus fa-lg"></i>
 				</div>
 			</nav>
@@ -84,6 +80,13 @@
 	</div>
 	 	
  </div>
+ <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+    	Oinarrizko App maketa - Iker Hernandez  
+    </p>
+  </div>
+</footer>
       <script src="bideo_erreproduktorea.js"></script>
   </body>
 </html>

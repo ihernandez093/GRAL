@@ -382,11 +382,11 @@ function elementuaGehitu (balioakSartu) {
 	  bideoDiv[v]=document.createElement("div");
 	  bideoDiv[v].className="level-left bideoLista";
 	  listaIzena[v]=document.createElement("p");
-	  listaIzena[v].className="level-item is-clickable";
+	  listaIzena[v].className="level-item is-clickable title is-4";
 	  listaIzena[v].id=balioakSartu[v];
 	  listaIzena[v].setAttribute("onclick","erakutsi(id)");
 	  n=v+1;
-	  listaIzena[v].innerHTML=n+"."+balioakSartu[v];
+	  listaIzena[v].innerHTML=n+". "+balioakSartu[v];
 	  bideoDiv[v].appendChild(listaIzena[v]);
 	  nextDiv[v].appendChild(bideoDiv[v]);
 	  
