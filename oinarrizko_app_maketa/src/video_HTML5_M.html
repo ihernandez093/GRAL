@@ -48,6 +48,16 @@
 	
 	<div class="column is-third mx-3 my-0 py-0">
 		<div class="box">
+			<nav class="level is-mobile mt-4">
+				  <div class="level-item select" id="audio">
+				  		<p class="subtitle is-4">Audio: </p> 
+					 	<select class="ml-4" id="audioSelect">
+					 	</select>
+					</div>
+					<div>				 	
+				   <i  id="audioButton"  onclick="audioAldatu()" class="is-clickable fas fa-redo-alt fa-lg"></i>
+				</div>
+			</nav>
 			<div id="countdownDiv">
 				<nav class="level is-mobile mt-0">
 					  <!-- Left side -->
@@ -64,7 +74,7 @@
 					
 				</nav>
 			</div>
-		   	<div class="lista mt-4" id="lista"></div>
+		   	<div class="lista mt-6" id="lista"></div>
 
 		   	<nav class="level is-mobile mt-4">
 				  <div class="level-item select" id="gehitu">
@@ -88,5 +98,6 @@
   </div>
 </footer>
       <script src="bideo_erreproduktorea.js"></script>
+      <audio id="audioPlayer" style="display:none;" src="video/J_A.wav"></audio>
   </body>
 </html>

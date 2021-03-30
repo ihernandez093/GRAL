@@ -151,6 +151,10 @@ video::-webkit-media-controls {
   display: none;
 }
 
+video{
+	height: 100%;
+	width: 100%;
+}
 
 
 
