@@ -165,31 +165,29 @@
 			<button  class="button is-info is-large" onclick="queryh()" value="BideoaBistaratu">Dantzan hasi! </button>
 	  <p id="alerta">
 	</div>
+	<div id="notifikazioa" class="ezkutatu notification is-link">
+  		<button class="delete" id="kendu"></button>
+  		"Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!"
+  </div>
 </div>
 	  
 
 <div class="ezkutatu" id="audioAukeratu">
 	<h3 class="subtitle is-3">Audio erreproduktorea </h3>
-	<table class="tableIkustezina">
-		<tr id="thIkusitezina">
-			<td id="tdIkustezina">
-				<form action="audio.html">
-					<div class="select is-large  is-info">
-						<select name="balioa" >
-							<option value="A"> A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-							<option value="OSOA">OSOA</option>
-						</select>
-					</div>	
-					<br>
-					<div class="columns is-centered is-mobile py-5 is-narrow">
-						<input type="submit" class="button is-info is-large" value="Audioa entzun!"/>
-					</div>
-				</form>
-			</td>	
-		</tr>
-	</table>
+		<div class="select is-large is-centered is-mobile is-info">
+			<select name="balioa" id="audioSelect">
+				<option value="A"> A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+				<option value="OSOA">OSOA</option>
+			</select>
+		</div>	
+		<div class="columns is-centered is-mobile py-5 is-narrow">
+			<input type="submit" class="button is-info is-large" onclick="audioAldatu()"value="Audioa entzun!"/>
+		</div>
+	<audio class="is-centered"loop preload="metadata" preload="metadata" id="audioPlayer" controls type="audio/wav" width=50%>
+	  Tu navegador no soporta el audio de HTML5
+	</audio>
 </div>
 <footer class="footer">
   <div class="content has-text-centered">

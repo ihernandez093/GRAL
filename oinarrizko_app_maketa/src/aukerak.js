@@ -70,6 +70,7 @@ function ugariAukeratu(balioa){
 function queryh(){
 	if(aBalio.length==0){
 		document.getElementById("alerta").innerHTML="Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!";
+		document.getElementById("notifikazioa").style.visibility="contents";
 	}
 	else{
 		document.getElementById("alerta").innerHTML=null;
@@ -122,6 +123,16 @@ function divAudio(){
 	
 	bideoLi.className='';
 	audioLi.className='is-active';
+}
+
+function audioAldatu(){
+	var value =document.getElementById("audioSelect").value;
+	var audioPlayer=document.getElementById("audioPlayer")
+	console.log("audiselect: "+value);
+	
+	audioPlayer.src="video/J_"+value+".wav";	
+	audioPlayer.load();
+	console.log("Audioa:"+value+"   ixildu:"+ixildu);
 }
 
 
