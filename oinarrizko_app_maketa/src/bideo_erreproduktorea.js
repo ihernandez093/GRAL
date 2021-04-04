@@ -621,7 +621,7 @@ function audioAldatu(){
 	}else{
 		ixildu=1;
 		setMute();
-		audioPlayer.src="video/J_"+value+".wav";	
+		audioPlayer.src="video/J_"+value+".mp3";	
 		audioPlayer.load();
 		console.log("Audioa:"+value+"   ixildu:"+ixildu);
 		stopMedia();
