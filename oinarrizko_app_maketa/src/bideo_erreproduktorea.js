@@ -101,13 +101,22 @@ function playPauseMedia() {
 	}
 
 stop.addEventListener('click', stopMedia);
-media.addEventListener('ended', stopMedia);
+media.addEventListener('ended', stopMediaBideo);
 
 function stopMedia() {
 	  media.pause();
 	  audioPlayer.pause();
 	  media.currentTime = 0;
 	  audioPlayer.currentTime=0;
+	  play.setAttribute('data-icon','P');
+	  rwd.classList.remove('active');
+	  fwd.classList.remove('active');
+	  clearInterval(intervalRwd);
+	  clearInterval(intervalFwd);
+	}
+function stopMediaBideo() {
+	  media.pause();
+	  media.currentTime = 0;
 	  play.setAttribute('data-icon','P');
 	  rwd.classList.remove('active');
 	  fwd.classList.remove('active');
@@ -146,10 +155,8 @@ function berria(elm){
 	media.src = nextsrc[elm];
 	media.load();
 	media.play();
-	audioPlayer.currentTime=0;
-	audioPlayer.play();
 	//fetchVideoAndPlay(nextsrc[elm]);
-	console.log("Elm:"+elm+" Src:"+media.src);
+	console.log("Elm:"+elm+" Src:"+media.src+" berriaN");
 }
 
 function berriaB(elm){
@@ -159,7 +166,7 @@ function berriaB(elm){
 	audioPlayer.currentTime=0;
 	playPause();
 	//fetchVideoAndPlay(nextsrc[elm]);
-	console.log("Elm:"+elm+" Src:"+media.src);
+	console.log("Elm:"+elm+" Src:"+media.src+"berraB");
 
 }
 /*
@@ -398,7 +405,7 @@ function elementuaGehitu (balioakSartu) {
 	  bideoDiv[v].className="level-left bideoLista";
 	  listaIzena[v]=document.createElement("p");
 	  listaIzena[v].className="level-item is-clickable title is-4";
-	  listaIzena[v].id=balioakSartu[v];
+	  listaIzena[v].id=v;
 	  listaIzena[v].setAttribute("onclick","erakutsi(id)");
 	  n=v+1;
 	  listaIzena[v].innerHTML=n+". "+balioakSartu[v];
@@ -409,7 +416,7 @@ function elementuaGehitu (balioakSartu) {
 	  botoiDiv[v]=document.createElement("div");
 	  botoiDiv[v].className="level-right botoiLista";
 	  gora[v]=document.createElement("i");
-	  gora[v].value=balioakSartu[v];
+	  gora[v].value=v;
 	  gora[v].setAttribute("onclick","igo(value)");
 	  gora[v].className="level-item is-clickable gora fas fa-chevron-up fa-lg";
 	  //gora[v].innerHTML="Igo";
@@ -417,7 +424,7 @@ function elementuaGehitu (balioakSartu) {
 	  
 	  //behera botoia gehitu
 	  behera[v]=document.createElement("i");
-	  behera[v].value=balioakSartu[v];
+	  behera[v].value=v;
 	  behera[v].setAttribute("onclick","jeitsi(value)");
 	  behera[v].className="is-clickable level-item behera fas fa-chevron-down fa-lg";
 	  //behera[v].innerHTML="Jeitsi";
@@ -426,7 +433,7 @@ function elementuaGehitu (balioakSartu) {
 	  
 	  //
 	  kendu[v]=document.createElement("i");
-	  kendu[v].value=balioakSartu[v];
+	  kendu[v].value=v;
 	  kendu[v].setAttribute("onclick","kenduPausua(value)");
 	  kendu[v].className="is-clickable level-item kendu fas fa-minus fa-lg";
 	  //kendu[v].innerHTML="Kendu";
@@ -444,12 +451,12 @@ function nagusia(elem,balioakSartu){
 	var elementua;
 	for(var v=0;v<balioakSartu.length;v++){
 		if(v==elem){
-			elementua = document.getElementById(balioakSartu[v]);
+			elementua = document.getElementById(v);
 			elementua.style.fontWeight="bold";
 			elementua.className="level-item is-clickable title is-4";
 		}
 		else{
-			elementua = document.getElementById(balioakSartu[v]);
+			elementua = document.getElementById(v);
 			elementua.style.fontWeight="normal";
 			elementua.className="level-item is-clickable title is-5";
 			
@@ -460,14 +467,14 @@ function nagusia(elem,balioakSartu){
 
 //ikusi nahiden bideoaren balioa pasa eta bistaratu
 function erakutsi(value){
-	elm=balioak.indexOf(value);
+	elm=value;
 	berriaB(elm);
 }
 
 
 //bideo bat listan goran egin
 function igo(value){
-	elm=balioak.indexOf(value);
+	elm=value;
 	if(elm!=0){
 	console.log("gora:"+array_move(balioak,elm,elm-1));
 	divEzabatu();
@@ -478,7 +485,7 @@ function igo(value){
 
 //bideo bat listan behera egin
 function jeitsi(value){
-	elm=balioak.indexOf(value);
+	elm=value;
 	if(elm!=balioak.length-1){
 		console.log("gora:"+array_move(balioak,elm,elm+1));
 		divEzabatu();
@@ -490,7 +497,7 @@ function jeitsi(value){
 
 //bideo listatik kendu
 function kenduPausua(value){
-	elm=balioak.indexOf(value);
+	elm=value;
 	console.log("kendu:"+balioak.splice(elm,1)+" balioa:"+balioak);
 	divEzabatu();
 	elementuaGehitu(balioak);
@@ -559,7 +566,8 @@ function gehituBistaratu(){
 
 function gehituArraySortu(){
 	gehitu=[];
-	gehitu=pausuak.filter(x => balioak.indexOf(x) === -1)
+	//gehitu=pausuak.filter(x => balioak.indexOf(x) === -1)
+	gehitu=pausuak;
 	console.log("GehituSortu:"+gehitu);
 }
 
@@ -580,6 +588,9 @@ function gehituOptUstu(){
 	    	gehituSelect.remove(i);
 	}
 }
+
+
+
 
 
 //AUDIO
