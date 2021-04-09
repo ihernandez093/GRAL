@@ -1,0 +1,56 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+*{
+	font-family: helvetica;
+}
+
+
+h1 {text-align: center;}
+h2 {text-align: center;}
+h3 {text-align: center;}
+
+table, th, td{
+	border: 0px; text-align: center;
+}
+
+.tableIkustezina{
+	border: 0px; 
+	width: 90%; 
+	margin: 5%;
+}
+#thIkustezina, #tdIkustezina{
+	border: 0px; text-align: center;
+}
+
+.submit{
+	display:inline-block;
+	padding:0.7em 1.7em;
+	margin:0 0.3em 0.3em 0;
+	border-radius:0.2em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Roboto',sans-serif;
+	font-weight:400;
+	color:#FFFFFF;
+	background-color:#3369ff;
+	box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+	text-align:center;
+	position:relative;
+}
+
+.submit:active{
+	box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+}
+
+/*aukera*/
+
+.ezkutatu{
+	display:none;
+}
+
+.bistaratu{
+	display: contents;
+}
+
+
+
