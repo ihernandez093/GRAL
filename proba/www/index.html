@@ -38,7 +38,7 @@
 					<table class="tableIkustezina">
 						<tr id="thIkusitezina">
 							<td id="tdIkustezina">
-									<input class="button is-info is-large" type="submit" onclick="aukeratuPantailara()" value="Hasi">
+									<input class="button is-info" type="submit" onclick="aukeratuPantailara()" value="Hasi">
 							</td>
 									
 						</tr>
@@ -50,7 +50,7 @@
 				    	<p class="title">
 				      	Funtzionalitateak
 				    	</p>
-							<input class="button is-outlined is-light is-large" type="submit" onclick="aukeratuPantailara()" value="Hasi">
+							<input class="button is-outlined is-light" type="submit" onclick="aukeratuPantailara()" value="Hasi">
 					</div>
 				</section>
 				
@@ -59,7 +59,7 @@
 				    	<p class="title">
 				      	Erreproduktorea
 				    	</p>
-						<input class="button is-outlined is-light is-large" type="submit" onclick="aukeratuPantailara()" value="Hasi">
+						<input class="button is-outlined is-light" type="submit" onclick="aukeratuPantailara()" value="Hasi">
 					</div>
 				</section>
             </div>
@@ -70,14 +70,20 @@
             
             
             <div id="aukeratuPantaila" class="ezkutatu">            
+				<div class="mx-4 my-4">
+			  		<nav class="level is-mobile">
+			  			<div class="level-left">
+							<button class="button is-rounded" onclick="lehenengoPantailara()"><i class="fas fa-arrow-left"></i></button>
+			  			</div>
+			  			<div class="level-item has-text-centered">
+			  				<h1 class="title">Oinarrizko App maketa</h1>
+			  			</div>
+			  		</nav>
+			  		<h1 class="subtitle is-5">Pantaila honetan erabiltzaileari pauso desberdinak aurkeztuko zaizkio, eta berak aukeratuko ditu berak ondoren ikusteko</h1>
+				
+				</div>
             
-            	<section class="section is-fullwidth">
-						<button class="button is-rounded" onclick="lehenengoPantailara()"><i class="fas fa-arrow-left"></i></button>
-					<h1 class="title is-1 is-spaced">Oinarrizko App maketa</h1>
-					<h1 class="subtitle is-4">Pantaila honetan erabiltzaileari pauso desberdinak aurkeztuko zaizkio, eta berak aukeratuko ditu berak ondoren ikusteko</h1>
-				</section>
-            
-            <div class="tabs is-large is-centered is-fullwidth">
+            <div class="tabs is-centered is-fullwidth">
 			  <ul>
 			    <li class="is-active " id="bideoLi">
 			      <a onclick="divBideo()">
@@ -101,10 +107,10 @@
 			
 			<div class="bistaratu" id="bideoAukeratu">
 				<section class="section">
-					<h3 class="subtitle is-3">Bideoak aukeratu eta segidan bistaratu</h3>
+					<h3 class="subtitle is-5">Bideoak aukeratu eta segidan bistaratu</h3>
 				  
-					<div class=" mt-4  pt-4 columns is-desktop is-multiline is-centered">
-					  <div class="column mx-5">
+					<div class=" mt-1  pt-1 columns is-desktop is-multiline is-centered">
+					  <div class="column">
 					  		<article class="panel is-info">
 					  		<div class="panel-heading">
 								<nav class="level is-mobile">
@@ -134,7 +140,7 @@
 				  			</a>  
 					  </article>
 					  </div>
-					  <div class="column mx-5">
+					  <div class="column">
 					  <article class="panel is-info">
 					  		<div class="panel-heading">
 								<nav class="level is-mobile">
@@ -164,7 +170,7 @@
 				  			</label>  
 					  </article>
 					  </div>
-					  <div class="column mx-5">
+					  <div class="column">
 						  	<article class="panel is-info">
 						  		<div class="panel-heading">
 									<nav class="level is-mobile">
@@ -213,7 +219,7 @@
 			
 			<div class="ezkutatu" id="audioAukeratu">
 				<section class="section">
-					<h3 class="subtitle is-3 mb-4  pb-4">Audio erreproduktorea </h3>
+					<h3 class="subtitle is-5 mb-4  pb-4">Audio erreproduktorea </h3>
 					<!-- Main container -->
 					<nav class="level">
 					  <!-- Left side -->
@@ -249,15 +255,12 @@
             
             <div id="erreproduktorePantaila" class="ezkutatu">
               	<div class="mx-4 my-4">
-			  		<nav class="level">
+			  		<nav class="level is-mobile">
 			  			<div class="level-left">
 							<button class="button is-rounded" type="submit" onclick="aukeratuPantailara()"><i class="fas fa-arrow-left"></i></button>
 			  			</div>
 			  			<div class="level-item has-text-centered">
 			  				<h1 class="title">Oinarrizko App maketa</h1>
-			  			</div>
-			  			<div class="level-item has-text-centered">
-			  					<h2 class="subtitle">Pauso erreproduktorea </h2>
 			  			</div>
 			  		</nav>
 				</div>			  

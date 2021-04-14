@@ -62,7 +62,9 @@ function ugariAukeratu(balioa){
 		}
 	}else{
 		for(var v=0; v<elementuak.length;v++){
-			elementuak[v].click();
+			if(elementuak[v].checked==true){
+				elementuak[v].click();
+			}
 		}
 	}
 }
@@ -142,17 +144,6 @@ function notiEzkutatu(){
 	document.getElementById("notifikazioa").setAttribute('style', 'display:none;');
 }
 
-function checkAll(checktoggle)
-{
-  var checkboxes = new Array(); 
-  checkboxes = document.getElementsByTagName('input');
- 
-  for (var i=0; i<checkboxes.length; i++)  {
-    if (checkboxes[i].type == 'checkbox')   {
-      checkboxes[i].checked = checktoggle;
-    }
-  }
-}
 
 function aukerakHasieratu(){
 	while(aBalio[0]!=null){
@@ -167,5 +158,17 @@ function audioaGelditu(){
 	audioPlayer.pause();
 	audioPlayer.currentTime=0;
 }
+
+function checkAll(checktoggle){
+  var checkboxes = new Array(); 
+  checkboxes = document.getElementsByTagName('input');
+ 
+  for (var i=0; i<checkboxes.length; i++)  {
+    if (checkboxes[i].type == 'checkbox')   {
+      checkboxes[i].checked = checktoggle;
+    }
+  }
+}
+
 
 

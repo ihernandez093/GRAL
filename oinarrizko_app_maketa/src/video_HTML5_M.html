@@ -12,7 +12,7 @@
   	<body>
   	
   	<div class="mx-4 my-4">
-  		<nav class="level">
+  		<nav class="level is-mobile">
   			<div class="level-left">
   				<form action="aukerak.html">
 				<button class="button is-rounded" style="background: white" type="submit"><i class="fas fa-arrow-left"></i></button>
@@ -20,9 +20,6 @@
   			</div>
   			<div class="level-item has-text-centered">
   				<h1 class="title">Oinarrizko App maketa</h1>
-  			</div>
-  			<div class="level-item has-text-centered">
-  					<h2 class="subtitle">Pauso erreproduktorea </h2>
   			</div>
   		</nav>
 </div>
@@ -32,16 +29,15 @@
 	    <div class="player mx-3 my-0 py-0">
 	      <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
 	      <div class="controls">
-	        <button class="play" data-icon="P" aria-label="play pause toggle"></button>
-	        <button class="stop" data-icon="S" aria-label="stop"></button>
+	        <button class="play buttonB"><i id="playIcon" class="fas fa-play fa-lg" style="color:white"></i></button>
+	        <button class="stop buttonB"><i class="fas fa-stop fa-lg" style="color:white"></i></button>
 	        <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
-	        <button class="mute" data-icon="Q" onclick="setMute()" aria-label="mute"></button>
-	        <button class="speed" data-icon="W" aria-label="speed"></button>
-	        <button class="loop" data-icon="U" aria-label="loop"></button>
-	        <button class="full" data-icon="M" onclick="fullScreen()" aria-label="fast forward"></button>
-	        <button class="rwd" data-icon="B" aria-label="rewind"></button>
-	        <button class="fwd" data-icon="F" aria-label="fast forward"></button>
-	        
+	        <button class="mute buttonB" onclick="setMute()"><i id="muteIcon" class="fas fa-volume-mute fa-lg" style="color:white"></i></button>
+	        <button class="speed buttonB"><i id="abiaduraIcon" class="far fa-clock fa-lg" style="color:white"></i></button>
+	        <button class="loop buttonB"><i id="loopIcon"class="fas fa-undo fa-lg" style="color:white"></i></button>
+	        <button class="full buttonB"onclick="fullScreen()"><i class="fas fa-expand-alt fa-lg" style="color:white"></i></button>
+	        <button class="rwd buttonB"><i class="fas fa-backward fa-lg" style="color:white"></i></button>
+	        <button class="fwd buttonB"><i class="fas fa-forward fa-lg"style="color:white"></i></button>        
 	      </div>
 	    </div>
 	</div>
@@ -98,6 +94,6 @@
   </div>
 </footer>
       <script src="bideo_erreproduktorea.js"></script>
-      <audio id="audioPlayer" style="display:none;" loop src="video/J_A.mp3"></audio>
+      <audio id="audioPlayer" style="display:none;" loop></audio>
   </body>
 </html>

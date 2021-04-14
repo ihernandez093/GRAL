@@ -24,6 +24,7 @@ for(var value of urlParams.values()) {
 
 
 const play = document.querySelector('.play');
+const playIcon = document.getElementById("playIcon");
 const stop = document.querySelector('.stop');
 const rwd = document.querySelector('.rwd');
 const fwd = document.querySelector('.fwd');
@@ -33,9 +34,12 @@ const timer = document.querySelector('.timer span');
 const timerBar = document.querySelector('.timer div');
 
 const abiadura=document.querySelector('.speed');
+const speedIcon = document.getElementById("speedIcon");
 const loop=document.querySelector('.loop');
+const loopIcon = document.getElementById("loopIcon");
 const full=document.querySelector('.full');
 const mute=document.querySelector('.mute');
+const muteIcon = document.getElementById("muteIcon");
 var ixildu=0;
 
 
@@ -90,11 +94,11 @@ function playPauseMedia() {
 	clearInterval(intervalRwd);
 	clearInterval(intervalFwd);
 	  if(media.paused) {
-	    play.setAttribute('data-icon','u');
+		playIcon.className="fas fa-pause fa-lg";
 	    media.play();
 	    audioPlayer.play();
 	  } else {
-	    play.setAttribute('data-icon','P');
+		playIcon.className="fas fa-play fa-lg";
 	    media.pause();
 	    audioPlayer.pause();
 	  }
@@ -105,10 +109,10 @@ media.addEventListener('ended', stopMediaBideo);
 
 function stopMedia() {
 	  media.pause();
-	  audioPlayer.pause();
 	  media.currentTime = 0;
+	  playIcon.className="fas fa-play fa-lg";
+	  audioPlayer.pause();	  
 	  audioPlayer.currentTime=0;
-	  play.setAttribute('data-icon','P');
 	  rwd.classList.remove('active');
 	  fwd.classList.remove('active');
 	  clearInterval(intervalRwd);
@@ -117,7 +121,7 @@ function stopMedia() {
 function stopMediaBideo() {
 	  media.pause();
 	  media.currentTime = 0;
-	  play.setAttribute('data-icon','P');
+	  playIcon.className="fas fa-play fa-lg";
 	  rwd.classList.remove('active');
 	  fwd.classList.remove('active');
 	  clearInterval(intervalRwd);
@@ -274,13 +278,15 @@ abiadura.addEventListener('click',setAbiadura);
 		
 		if (media.playbackRate==1){
 			media.playbackRate=0.5;
-			audioPlayer.playbackRate=0.5;
+			abiaduraIcon.style.color="hsl(217, 71%, 53%)";
+			audioPlayer.playbackRate=0.5;			
 		} else if (media.playback==0.5){
 			media.playbackRate=5.0;
 			audioPlayer.playbackRate=5.0;
 		}else{
 			media.playbackRate=1;
-			audioPlayer.playbackRate=1;
+			abiaduraIcon.style.color="white";
+			audioPlayer.playbackRate=1;			
 		}
 		
 	}
@@ -290,11 +296,14 @@ loop.addEventListener('click',setLoop);
 	
 	function setLoop(){
 		if(media.loop){
+			loopIcon.style.color="white";
 			media.loop=false;
-			audioPlayer.loop=false;
+			audioPlayer.loop=false;			
 		}else{
+			loopIcon.style.color="hsl(217, 71%, 53%)";
 			media.loop=true;
 			audioPlayer.loop=true;
+			
 		}
 	}
 
@@ -362,14 +371,17 @@ mute.addEventListener('click',setMute());
 	function setMute(){
 		
 		if(ixildu==0){
+			muteIcon.style.color="white";
 			media.muted=false;
 			ixildu=1;
 			console.log("Mute:"+false+ixildu);
-		}else{			
+			
+		}else{	
+			muteIcon.style.color="hsl(217, 71%, 53%)";
 			media.muted=true;
 			ixildu=0;
 			console.log("Mute:"+true+ixildu);
-		}
+					}
 		
 	}
 

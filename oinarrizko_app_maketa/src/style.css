@@ -65,7 +65,7 @@ video {
   display: flex;
 }
 
-button, .controls {
+.buttonB, .controls {
   background: linear-gradient(to bottom,#222,#666);
 }
 
@@ -73,7 +73,7 @@ button, .controls {
   opacity: 1;
 }
 
-button:before {
+.buttonB:before {
   font-family: HeydingsControlsRegular;
   font-size: 20px;
   position: relative;
@@ -87,14 +87,14 @@ button:before {
 }
 
 
-button, .timer {
+.buttonB, .timer {
   height: 38px;
   line-height: 19px;
   box-shadow: inset 0 -5px 25px rgba(0,0,0,0.3);
   border-right: 1px solid #333;
 }
 
-button {
+.buttonB {
   position: relative;
   border: 0;
   flex: 1;
@@ -135,11 +135,11 @@ button {
   left: 19px;
 }
 
-button:hover,button:focus {
+.buttonB:hover,.buttonB:focus {
   box-shadow: inset 1px 1px 2px black;
 }
 
-button:active {
+.buttonB:active {
   box-shadow: inset 3px 3px 2px black;
 }
 

@@ -10,10 +10,11 @@ var i=0;
 
 
 //orrialdea kargatzerakoan aukeratutako guztiak destxekeatu
-$().ready(function() {
-    //on page load uncheck any ticked checkboxes
-    $("input:checkbox:checked").attr("checked", "");
-});
+window.onload =function (){
+	checkAll(false);
+	aukerakHasieratu();
+	notiEzkutatu();
+}
 
 function egiaztatu (balioa){
 	var testua= document.getElementById(balioa).innerHTML;
@@ -57,10 +58,19 @@ function pantailara(array){
 
 function ugariAukeratu(balioa){
 	var elementuak=document.getElementsByClassName(balioa);
-	console.log("elementua:"+elementuak.length);
-	console.log("balioa:"+balioa);
-	for(var v=0; v<elementuak.length;v++){
-		elementuak[v].click();
+	console.log("balioa: "+balioa+"  allchecked:"+document.getElementById(balioa).checked);
+	if(document.getElementById(balioa).checked==true){
+		for(var v=0; v<elementuak.length;v++){
+			if(elementuak[v].checked==false){
+			elementuak[v].click();
+			}
+		}
+	}else{
+		for(var v=0; v<elementuak.length;v++){
+			if(elementuak[v].checked==true){
+				elementuak[v].click();
+			}
+		}
 	}
 }
 
@@ -70,7 +80,7 @@ function ugariAukeratu(balioa){
 function queryh(){
 	if(aBalio.length==0){
 		document.getElementById("alerta").innerHTML="Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!";
-		document.getElementById("notifikazioa").style.visibility="contents";
+		document.getElementById("notifikazioa").setAttribute('style', 'display:block;');
 	}
 	else{
 		document.getElementById("alerta").innerHTML=null;
@@ -135,7 +145,25 @@ function audioAldatu(){
 	console.log("Audioa:"+value+"   ixildu:"+ixildu);
 }
 
+function checkAll(checktoggle){
+  var checkboxes = new Array(); 
+  checkboxes = document.getElementsByTagName('input');
+ 
+  for (var i=0; i<checkboxes.length; i++)  {
+    if (checkboxes[i].type == 'checkbox')   {
+      checkboxes[i].checked = checktoggle;
+    }
+  }
+}
 
+function aukerakHasieratu(){
+	while(aBalio[0]!=null){
+		kendu(aBalio[0]);
+	}
+}
+function notiEzkutatu(){
+	document.getElementById("notifikazioa").setAttribute('style', 'display:none;');
+}
 
 
 
