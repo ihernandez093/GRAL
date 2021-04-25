@@ -42,6 +42,9 @@ const full=document.querySelector('.full');
 const mute=document.querySelector('.mute');
 const muteIcon = document.getElementById("muteIcon");
 var ixildu=1;
+var audioLuzeera=0;
+var bideoMomentua=0;
+
 
 
 media.removeAttribute('controls');
@@ -153,19 +156,25 @@ let intervalRwd;
 function aurrekoa(){
 	if(elm==0){
 		elm=nextsrc.length-1;
-		berria(elm);	
+		bideoMomentua=media.currentTime;
+		berria(elm);
+		audioLuzeraAtzeraAldatu();	
 	}else{
 		--elm;
-		berria(elm);	
-	}	
-	}
+		bideoMomentua=media.currentTime;
+		berria(elm);
+		audioLuzeraAtzeraAldatu();		
+	}		
+}
 
 function hurrengoa(){
 	if(elm==nextsrc.length-1){
 		elm=0;
+		audioLuzeraAurreraAldatu();
 		berria(elm);	
 	}else{
 		++elm;
+		audioLuzeraAurreraAldatu();
 		berria(elm);	
 	}
 }
@@ -606,6 +615,42 @@ function audioAldatu(){
 	}
 }
 
+function audioLuzeraAurreraAldatu(){
+	var value =document.getElementById("audioSelect").value;
+	if(value!=""){
+		var gehiketa=audioLuzeera + media.duration;
+		console.log(" AURRERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+media.duration+" audiPlayer berria:"+gehiketa);
+		if( audioPlayer.duration<=gehiketa+media.duration){
+			audioLuzeera=0;
+			audioPlayer.currentTime=audioLuzeera;
+			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
+		}else{
+			audioLuzeera= gehiketa;
+			audioPlayer.currentTime=audioLuzeera;
+			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
+		}
+	}
+}
+
+function audioLuzeraAtzeraAldatu(){
+	var value =document.getElementById("audioSelect").value;
+	if(value!=""){
+		media.onloadedmetadata=function(){
+			console.log(media.duration);
+			var kenketa=audioPlayer.currentTime - media.duration - bideoMomentua;
+			console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
+			if( kenketa<=0){
+				audioLuzeera=0;
+				audioPlayer.currentTime=audioLuzeera;
+				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
+			}else{
+				audioLuzeera= kenketa;
+				audioPlayer.currentTime=audioLuzeera;
+				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
+			}
+		}
+	}
+}
 
 
 

@@ -41,6 +41,8 @@ const full=document.querySelector('.full');
 const mute=document.querySelector('.mute');
 const muteIcon = document.getElementById("muteIcon");
 var ixildu=0;
+var audioLuzeera=0;
+var bideoMomentua=0;
 
 
 media.removeAttribute('controls');
@@ -137,19 +139,25 @@ let intervalRwd;
 function aurrekoa(){
 	if(elm==0){
 		elm=nextsrc.length-1;
-		berria(elm);	
+		bideoMomentua=media.currentTime;
+		berria(elm);
+		audioLuzeraAtzeraAldatu();	
 	}else{
 		--elm;
-		berria(elm);	
+		bideoMomentua=media.currentTime;
+		berria(elm);
+		audioLuzeraAtzeraAldatu();		
 	}	
-	}
+}
 
 function hurrengoa(){
 	if(elm==nextsrc.length-1){
 		elm=0;
+		audioLuzeraAurreraAldatu();
 		berria(elm);	
 	}else{
 		++elm;
+		audioLuzeraAurreraAldatu();
 		berria(elm);	
 	}
 }
@@ -159,6 +167,7 @@ function berria(elm){
 	media.src = nextsrc[elm];
 	media.load();
 	media.play();
+	console.log(media.duration);
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src+" berriaN");
 }
@@ -167,63 +176,14 @@ function berriaB(elm){
 	nagusia(elm,balioak);
 	media.src = nextsrc[elm];
 	media.load();
+	console.log(media.duration);
 	audioPlayer.currentTime=0;
 	playPause();
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src+"berraB");
 
 }
-/*
-function fetchVideoAndPlay(bideo) {
-    fetch(bideo)
-    .then(response => response.blob())
-    .then(blob => {
-      media.srcObject = blob;
-      return media.play();
-    })
-    .then(_ => {
-      // Video playback started ;)
-    })
-    .catch(e => {
-      // Video playback failed ;(
-    })
-  }
-  */
 
-
-
-/* GUZTI HAU BIDEOAN ATZERA TA AURREA JUTEKO
-
-function mediaBackward() {
-  clearInterval(intervalFwd);
-  fwd.classList.remove('active');
-
-  if(rwd.classList.contains('active')) {
-    rwd.classList.remove('active');
-    clearInterval(intervalRwd);
-    media.play();
-  } else {
-    rwd.classList.add('active');
-    media.pause();
-    intervalRwd = setInterval(windBackward, 200);
-  }
-}
-
-function mediaForward() {
-  clearInterval(intervalRwd);
-  rwd.classList.remove('active');
-
-  if(fwd.classList.contains('active')) {
-    fwd.classList.remove('active');
-    clearInterval(intervalFwd);
-    media.play();
-  } else {
-    fwd.classList.add('active');
-    media.pause();
-    intervalFwd = setInterval(windForward, 200);
-  }
-}
-*/
 
 function windBackward() {
 	  if(media.currentTime <= 3) {
@@ -384,13 +344,6 @@ mute.addEventListener('click',setMute());
 					}
 		
 	}
-
-
-
-
-
-
-
 
 
 //Aukeratutako bideoen zerrenda erakutsi pantaila eraksuterakoan
@@ -637,6 +590,43 @@ function audioAldatu(){
 		audioPlayer.load();
 		console.log("Audioa:"+value+"   ixildu:"+ixildu);
 		stopMedia();
+	}
+}
+
+function audioLuzeraAurreraAldatu(){
+	var value =document.getElementById("audioSelect").value;
+	if(value!=""){
+		var gehiketa=audioLuzeera + media.duration;
+		console.log(" AURRERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+media.duration+" audiPlayer berria:"+gehiketa);
+		if( audioPlayer.duration<=gehiketa+media.duration){
+			audioLuzeera=0;
+			audioPlayer.currentTime=audioLuzeera;
+			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
+		}else{
+			audioLuzeera= gehiketa;
+			audioPlayer.currentTime=audioLuzeera;
+			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
+		}
+	}
+}
+
+function audioLuzeraAtzeraAldatu(){
+	var value =document.getElementById("audioSelect").value;
+	if(value!=""){
+		media.onloadedmetadata=function(){
+			console.log(media.duration);
+			var kenketa=audioPlayer.currentTime - media.duration - bideoMomentua;
+			console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
+			if( kenketa<=0){
+				audioLuzeera=0;
+				audioPlayer.currentTime=audioLuzeera;
+				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
+			}else{
+				audioLuzeera= kenketa;
+				audioPlayer.currentTime=audioLuzeera;
+				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
+			}
+		}
 	}
 }
 
