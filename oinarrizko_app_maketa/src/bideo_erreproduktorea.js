@@ -84,7 +84,7 @@ function playPause(){
 		playPauseMedia();
 	}
 }
-
+//
 function playPauseMedia() {
 	rwd.classList.remove('active');
 	fwd.classList.remove('active');
