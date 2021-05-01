@@ -63,11 +63,6 @@ for(var i=0;i<balioak.length;i++){
 */
 var elm = 0; 
 
-media.addEventListener("ended", bukatu);
-function bukatu(){
-	setTimeout(() => {hurrengoa();}, 5);
-     }
-
 play.addEventListener('click', playPause);
 
 function playPause(){
@@ -98,11 +93,15 @@ function playPauseMedia() {
 	  if(media.paused) {
 		playIcon.className="fas fa-pause fa-lg";
 	    media.play();
-	    audioPlayer.play();
+	    if(audioPlayer!=null){
+	    	audioPlayer.play();
+	    }
 	  } else {
 		playIcon.className="fas fa-play fa-lg";
 	    media.pause();
-	    audioPlayer.pause();
+	    if(audioPlayer!=null){
+	    	audioPlayer.pause();
+	    }
 	  }
 	}
 
@@ -113,8 +112,10 @@ function stopMedia() {
 	  media.pause();
 	  media.currentTime = 0;
 	  playIcon.className="fas fa-play fa-lg";
-	  audioPlayer.pause();	  
-	  audioPlayer.currentTime=0;
+	  if(audioPlayer!=null){
+		  audioPlayer.pause();	  
+		  audioPlayer.currentTime=0;
+	  }
 	  rwd.classList.remove('active');
 	  fwd.classList.remove('active');
 	  clearInterval(intervalRwd);
@@ -123,11 +124,12 @@ function stopMedia() {
 function stopMediaBideo() {
 	  media.pause();
 	  media.currentTime = 0;
-	  playIcon.className="fas fa-play fa-lg";
+	  //playIcon.className="fas fa-play fa-lg";
 	  rwd.classList.remove('active');
 	  fwd.classList.remove('active');
 	  clearInterval(intervalRwd);
 	  clearInterval(intervalFwd);
+	  setTimeout(() => {hurrengoa();}, 1);
 	}
 
 rwd.addEventListener('click', aurrekoa);
@@ -163,22 +165,22 @@ function hurrengoa(){
 }
 
 function berria(elm){
-	nagusia(elm,balioak);
+	
 	media.src = nextsrc[elm];
-	media.load();
 	media.play();
+	playIcon.className="fas fa-pause fa-lg";
+	nagusia(elm,balioak);
 	console.log(media.duration);
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src+" berriaN");
 }
 
-function berriaB(elm){
-	nagusia(elm,balioak);
+function berriaB(elm){	
 	media.src = nextsrc[elm];
-	media.load();
 	console.log(media.duration);
 	audioPlayer.currentTime=0;
 	playPause();
+	nagusia(elm,balioak);
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src+"berraB");
 
