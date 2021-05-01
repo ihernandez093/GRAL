@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en-gb">
+  <head>
+  	<meta charset="utf-8">
+  	<title>Oinarrizko App maketa</title>
+  	<link rel="stylesheet" type="text/css" href="style.css">
+  	<link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.2-web/css/all.css">
+ 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+ 
+  
+  	</head>
+  	<body>
+  	
+  	<div class="mx-4 my-4">
+  		<nav class="level is-mobile">
+  			<div class="level-left">
+  				<form action="aukerak.html">
+				<button class="button is-rounded" style="background: white" type="submit"><i class="fas fa-arrow-left"></i></button>
+				</form>
+  			</div>
+  			<div class="level-item has-text-centered">
+  				<h1 class="title">Oinarrizko App maketa</h1>
+  			</div>
+  		</nav>
+</div>
+  
+ <div class="columns is-desktop is-multiline is-centered">
+ 	<div class="column is-two-thirds-desktop">
+	    <div class="player mx-3 my-0 py-0">
+	      <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
+	      <div class="controls">
+	        <button class="play buttonB"><i id="playIcon" class="fas fa-play fa-lg" style="color:white"></i></button>
+	        <button class="stop buttonB"><i class="fas fa-stop fa-lg" style="color:white"></i></button>
+	        <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
+	        <button class="mute buttonB" onclick="setMute()"><i id="muteIcon" class="fas fa-volume-mute fa-lg" style="color:white"></i></button>
+	        <button class="speed buttonB"><i id="abiaduraIcon" class="far fa-clock fa-lg" style="color:white"></i></button>
+	        <button class="loop buttonB"><i id="loopIcon"class="fas fa-undo fa-lg" style="color:white"></i></button>
+	        <button class="full buttonB"onclick="fullScreen()"><i class="fas fa-expand-alt fa-lg" style="color:white"></i></button>
+	        <button class="rwd buttonB"><i class="fas fa-backward fa-lg" style="color:white"></i></button>
+	        <button class="fwd buttonB"><i class="fas fa-forward fa-lg"style="color:white"></i></button>        
+	      </div>
+	    </div>
+	</div>
+	
+	<div class="column is-third mx-3 my-0 py-0">
+		<div class="box">
+			<nav class="level is-mobile mt-4">
+				  <div class="level-item select" id="audio">
+				  		<p class="subtitle is-4">Audio: </p> 
+					 	<select class="ml-4" id="audioSelect">
+					 	</select>
+					</div>
+					<div>				 	
+				   <i  id="audioButton"  onclick="audioAldatu()" class="is-clickable fas fa-redo-alt fa-lg"></i>
+				</div>
+			</nav>
+			<div id="countdownDiv">
+				<nav class="level is-mobile mt-0">
+					  <!-- Left side -->
+					<div class="level-item" >
+					 	<p class="subtitle is-4">Countdown: </p> 					 	
+					 	<input class="ml-4" type="number" style="width: 70px" id="countdownValue" name="tentacles" value="5" min="1" max="15">	
+						<label class="switch ml-4">
+							<input type="checkbox" id="countdownId">
+							<span class="slider round"></span> 
+						</label>
+						<p class="subtitle is-5 ml-4"id="countdownText"></p>			 
+					 	
+					</div>				
+					
+				</nav>
+			</div>
+		   	<div class="lista mt-6" id="lista"></div>
+
+		   	<nav class="level is-mobile mt-4">
+				  <div class="level-item select" id="gehitu">
+					 	<select id="gehituSelect">
+					 	</select>
+					</div>
+					<div>				 	
+				   <i  id="gehituButton"  onclick="gehituPausua()" class="is-clickable fas fa-plus fa-lg"></i>
+				</div>
+			</nav>
+				
+		</div>
+	</div>
+	 	
+ </div>
+ <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+    	Oinarrizko App maketa - Iker Hernandez  
+    </p>
+  </div>
+</footer>
+      <script src="bideo_erreproduktorea.js"></script>
+      <audio id="audioPlayer" style="display:none;" loop></audio>
+  </body>
+</html>
