@@ -153,13 +153,18 @@ function aurrekoa(){
 }
 
 function hurrengoa(){
+	console.log("hemen hasta los huevos");
 	if(elm==nextsrc.length-1){
 		elm=0;
+		if(audioPlayer!=null){
 		audioLuzeraAurreraAldatu();
+		}
 		berria(elm);	
 	}else{
 		++elm;
-		audioLuzeraAurreraAldatu();
+		if(audioPlayer!=null){
+			audioLuzeraAurreraAldatu();
+			}
 		berria(elm);	
 	}
 }
