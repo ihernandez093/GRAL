@@ -26,10 +26,10 @@
   
  <div class="columns is-desktop is-multiline is-centered">
  	<div class="column is-two-thirds-desktop">
-	    <div class="player mx-3 my-0 py-0">
+	    <div class="player mx-2">
 	      <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
 	      <div class="controls">
-	        <button class="play buttonB"><i id="playIcon" class="fas fa-play fa-lg" style="color:white"></i></button>
+	        <button class="play buttonB" onclick="playPause()"><i id="playIcon" class="fas fa-play fa-lg" style="color:white"></i></button>
 	        <button class="stop buttonB"><i class="fas fa-stop fa-lg" style="color:white"></i></button>
 	        <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
 	        <button class="mute buttonB" onclick="setMute()"><i id="muteIcon" class="fas fa-volume-mute fa-lg" style="color:white"></i></button>
@@ -42,49 +42,126 @@
 	    </div>
 	</div>
 	
-	<div class="column is-third mx-3 my-0 py-0">
-		<div class="box">
-			<nav class="level is-mobile mt-4">
-				  <div class="level-item select" id="audio">
-				  		<p class="subtitle is-4">Audio: </p> 
-					 	<select class="ml-4" id="audioSelect">
-					 	</select>
-					</div>
-					<div>				 	
-				   <i  id="audioButton"  onclick="audioAldatu()" class="is-clickable fas fa-redo-alt fa-lg"></i>
-				</div>
-			</nav>
+	<div class="column is-third mx-3 my-0 py-2">
+		<div class="box" id="listaNagusia">
 			<div id="countdownDiv">
 				<nav class="level is-mobile mt-0">
 					  <!-- Left side -->
-					<div class="level-item" >
-					 	<p class="subtitle is-4">Countdown: </p> 					 	
-					 	<input class="ml-4" type="number" style="width: 70px" id="countdownValue" name="tentacles" value="5" min="1" max="15">	
-						<label class="switch ml-4">
-							<input type="checkbox" id="countdownId">
-							<span class="slider round"></span> 
-						</label>
-						<p class="subtitle is-5 ml-4"id="countdownText"></p>			 
-					 	
-					</div>				
+					  <div class="level-left">
+						<div class="level-item" >
+						 	<p class="title is-5">Countdown: </p> 					 	
+						 	<input class="ml-4" type="number" style="width: 70px" id="countdownValue" name="tentacles" value="5" min="1" max="15">	
+							<label class="switch ml-4">
+								<input type="checkbox" id="countdownId">
+								<span class="slider round"></span> 
+							</label>
+							<p class="subtitle is-6 ml-4"id="countdownText"></p>			 
+						 	
+						</div>	
+					</div>			
 					
 				</nav>
 			</div>
-		   	<div class="lista mt-6" id="lista"></div>
+			<div class="my-5">
+				<p class="title is-5">Aukeratutako bideoak:</p>
+			</div>
+		   	<div class="lista mt-3 ml-5" id="lista"></div>
 
-		   	<nav class="level is-mobile mt-4">
-				  <div class="level-item select" id="gehitu">
+		   	<nav class="level is-mobile mt-4 ml-5">
+		   		<div class="level-left">
+				  <div class="level-item select is-warning is-small" id="gehitu">
+				  		<p class="subtitle is-5 mr-2">Pausoa gehitu:</p>
 					 	<select id="gehituSelect">
 					 	</select>
 					</div>
-					<div>				 	
+					<div class="level-item">				 	
 				   <i  id="gehituButton"  onclick="gehituPausua()" class="is-clickable fas fa-plus fa-lg"></i>
 				</div>
-			</nav>
-				
+				</div>
+			</nav>				
 		</div>
-	</div>
+		
+		<div class="ezkutatu" id="dantzaAldatuCard">			
+			<div class="my-2">
+				<p class="title is-5 dantzaTitulo">A</p>
+			</div>
+			<div id="pausuakAukeratuPantaila">
+				<nav class="level is-mobile my-1 ml-3">
+			   		<div class="level-left">
+					  <div class="level-item select is-warning is-small" id="gehitu">
+					  		<p class="subtitle is-6 mr-2">- A Pausoa aukeratu:</p>
+						 	<select id="gehituSelectA">
+						 	</select>
+						</div>
+					</div>
+				</nav>
+				<nav class="level is-mobile my-1 ml-3">
+			   		<div class="level-left">
+					  <div class="level-item select is-warning is-small" id="gehitu">
+					  		<p class="subtitle is-6 mr-2">- B Pausoa aukeratu:</p>
+						 	<select id="gehituSelectB">
+						 	</select>
+						</div>
+					</div>
+				</nav>
+			   	<nav class="level is-mobile my-1 ml-3">
+			   		<div class="level-left">
+					  <div class="level-item select is-warning is-small" id="gehitu">
+					  		<p class="subtitle is-6 mr-2">- C Pausoa aukeratu:</p>
+						 	<select id="gehituSelectC">
+						 	</select>
+						</div>
+					</div>
+				</nav>
+				<div class="mt-3">
+					<input type="submit" class="button is-warning" onclick="dantzaPausuakAukeratu()"value="Dantza ikasten hasi"/>
+				</div>
+			</div>
+		</div>
+			<div class="ezkutatu" id="dantzaCard">
+				<div id="countdownDiv">
+					<nav class="level is-mobile mt-0">
+						  <!-- Left side -->
+						  <div class="level-left">
+							<div class="level-item" >
+							 	<p class="title is-5">Countdown: </p> 					 	
+							 	<input class="ml-4" type="number" style="width: 70px" id="countdownValue" name="tentacles" value="5" min="1" max="15">	
+								<label class="switch ml-4">
+									<input type="checkbox" id="countdownId">
+									<span class="slider round"></span> 
+								</label>
+								<p class="subtitle is-6 ml-4"id="countdownText"></p>			 
+							 	
+							</div>	
+						</div>			
+						
+					</nav>
+				</div>	
+				<nav class="level is-mobile my-5">
+			  	<div class="level-left">
+			  		<div class="level-item"><p class="title is-5 dantzaTitulo"></p></div>		
+			  		<div class="level-item mx-2 mb-1"><i onclick="dantzaCardAldatu()" class="is-clickable fas fa-exchange-alt fa-lg"></i></div>  	
+			  	</div>		  	
+		  	</nav>		
+				
+				<div class="lista mt-3 ml-5" id="listaDantza"></div>	
+			</div>							
+		
+		
+		<div class="card">
+		  <header class="card-header">
+		  	<nav class="level is-mobile my-3 mx-3">
+			  	<div class="level-left">
+			  		<div class="level-item"><p class="title is-5">Audioak :</p></div>
+			  		<div class="level-item "><p id="audioTitulo">Bideoko Audioa</p></div> 		
+			  		<div class="level-item mx-2 mb-1"><i class="is-clickable gora fas fa-angle-down fa-lg" onclick="audioListaErakutsi()"></i></div>  	
+			  	</div>		  	
+		  	</nav>
+		  </header>
+		  <div class="card-content ezkutatu mt-2" id="audioLista"></div>
+		</div>
 	 	
+ 	</div>
  </div>
  <footer class="footer">
   <div class="content has-text-centered">
@@ -93,7 +170,8 @@
     </p>
   </div>
 </footer>
-      <script src="bideo_erreproduktorea.js"></script>
-      <audio id="audioPlayer" style="display:none;" loop></audio>
+	<audio id="audioPlayer" style="display:none;" loop></audio>
+    <audio id="laburEntzunErreproduktorea" style="display:none;"></audio>
+    <script src="bideo_erreproduktorea.js"></script>      
   </body>
 </html>

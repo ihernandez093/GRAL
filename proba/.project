@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>oinarrizko_app_maketa_ORIGINALAK</name>
+	<name>proba</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -12,6 +12,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.thym.core.HybridAppNature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
 </projectDescription>

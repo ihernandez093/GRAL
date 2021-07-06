@@ -4,6 +4,8 @@ var querystring="video_HTML5_M.html?";
 
 var aBalio= [];
 var i=0;
+var perts=true;
+
 
 //document.body.onloadstart=divBistaratu('bideoAukeratu','audioAukeratu');
 //document.addEventListener('DOMContentLoaded', divBistaratu('bideoAukeratu','audioAukeratu'), false);
@@ -14,6 +16,7 @@ window.onload =function (){
 	checkAll(false);
 	aukerakHasieratu();
 	notiEzkutatu();
+	perts=true;
 }
 
 function egiaztatu (balioa){
@@ -27,6 +30,34 @@ function egiaztatu (balioa){
 }
 
 function gehitu(balioa){
+	if(!perts){
+		konprobatuBalioa=konprobatu(balioa.charAt(0));
+		if(konprobatuBalioa!=null){
+			inputak=document.getElementsByClassName(balioa.charAt(0));
+			for(var i=0;i<inputak.length;i++){
+				inputak[i].checked=false;
+			}
+			console.log("id arraroa: "+balioa.substr(0,4));
+			document.getElementById(balioa.substr(0,4)).checked=true;
+			kendu(konprobatuBalioa);
+		}
+	}
+	gehituHurrengoa(balioa);	
+}
+
+function konprobatu(balioa){
+	var bueltatu=null;
+	for(var v=0;v<aBalio.length;v++){
+		console.log(v+""+aBalio[v]);
+		if(aBalio[v].charAt(0)==balioa){
+			bueltatu=aBalio[v];
+		}
+	}
+	console.log("Konprobatu:"+bueltatu);
+	return bueltatu;
+}
+
+function gehituHurrengoa(balioa){
 	i++;
 	aBalio.push(balioa);
 	document.getElementById(balioa).innerHTML=i;
@@ -79,7 +110,7 @@ function ugariAukeratu(balioa){
 //QueryString-a bidali
 function queryh(){
 	if(aBalio.length==0){
-		document.getElementById("alerta").innerHTML="Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!";
+		//document.getElementById("alerta").innerHTML="Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!";
 		document.getElementById("notifikazioa").setAttribute('style', 'display:block;');
 	}
 	else{
@@ -96,6 +127,7 @@ function aldatu(){
 	for(var a=1;a<aBalio.length;a++){
 		querystring=querystring+"&balioa="+aBalio[a];
 	}
+	querystring=querystring+"&perts="+perts;
 }
 
 function divBistaratu(bistaratu,ezkutatu){
@@ -165,6 +197,30 @@ function notiEzkutatu(){
 	document.getElementById("notifikazioa").setAttribute('style', 'display:none;');
 }
 
+
+
+
+
+
+function pertsonalizatuaDiv(){
+	perts=true;
+	document.getElementById("pertsonalizatua").classList="is-active";
+	document.getElementById("jota").classList="";
+	document.getElementById("aukerarurakoDesk").innerHTML="Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!";
+	checkAll(false);
+	aukerakHasieratu();
+	notiEzkutatu();
+}
+
+function jotaDiv(){
+	perts=false;
+	document.getElementById("pertsonalizatua").classList="";
+	document.getElementById("jota").classList="is-active";
+	document.getElementById("aukerarurakoDesk").innerHTML="Pausu talde bakoitzetik (A-B-C) aukera bat aukeratu eta dantzan hasi!";
+	checkAll(false);
+	aukerakHasieratu();
+	notiEzkutatu();
+}
 
 
 

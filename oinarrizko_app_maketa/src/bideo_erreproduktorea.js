@@ -7,20 +7,28 @@ let balioak=[];
 var pausuak=[ "A_01_Aurretik", "A_09_Aurretik", "B_01_Aurretik", "B_07_2_Aurretik", "C_01_A_Aurretik", "C_Bikotean_04" ];
 var audioak=["","A","B","C","OSOA"];
 var gehitu=[];
-
+var perts=true;
 
 //Hau balioa lortzeko beste webgunetik
 const urlParams = new URLSearchParams(window.location.search);
 var nextsrc = [];
 for(var value of urlParams.values()) {
-	  console.log(value);
-	  balioak.push(value);
-	  console.log(balioak);
-	  nextsrc.push("video/"+value+".mp4");
+	if(value=="true"){
+		perts=true;
+		console.log("PERTS: "+perts);
+	}else if(value=="false"){		
+		perts=false;
+		console.log("PERTS: "+perts);
+	}else{
+		console.log(value);
+		balioak.push(value);
+		console.log(balioak);
+		nextsrc.push("video/"+value+".mp4");
 		console.log(nextsrc);
 		console.log("Luzeera:"+nextsrc.length);
-	}
-
+	}	  
+}
+var aukeratutakoAudioa= audioak[0];
 
 
 const play = document.querySelector('.play');
@@ -43,6 +51,8 @@ const muteIcon = document.getElementById("muteIcon");
 var ixildu=0;
 var audioLuzeera=0;
 var bideoMomentua=0;
+var audioListaEzkutatuta=0;
+var audioLaburErreproduzitzen=0;
 
 
 media.removeAttribute('controls');
@@ -52,7 +62,14 @@ const balioa=urlParams.get("balioa");
 var audioPlayer = document.getElementById("audioPlayer");
 media.src="video/"+balioa+".mp4"
 
-
+document.body.onload=hasieratu();
+	
+function hasieratu(){
+	if(!perts){
+		console.log("HEMEN");
+		danCardAldatu();
+	}
+}
 //https://stackoverflow.com/questions/2551859/html-5-video-or-audio-playlist
 
 /*var nextsrc = [];
@@ -63,7 +80,7 @@ for(var i=0;i<balioak.length;i++){
 */
 var elm = 0; 
 
-play.addEventListener('click', playPause);
+//play.addEventListener('click', playPause);
 
 function playPause(){
 	var countdown=document.getElementById("countdownId");
@@ -81,6 +98,7 @@ function playPause(){
 		}, 1000);
 	}
 	else{
+		console.log("hemen 2");
 		playPauseMedia();
 	}
 }
@@ -92,12 +110,14 @@ function playPauseMedia() {
 	clearInterval(intervalFwd);
 	  if(media.paused) {
 		playIcon.className="fas fa-pause fa-lg";
+		console.log("hemen erreproduzitzen");
 	    media.play();
 	    if(audioPlayer!=null){
 	    	audioPlayer.play();
 	    }
 	  } else {
 		playIcon.className="fas fa-play fa-lg";
+		console.log("hemen geldirik");
 	    media.pause();
 	    if(audioPlayer!=null){
 	    	audioPlayer.pause();
@@ -153,7 +173,6 @@ function aurrekoa(){
 }
 
 function hurrengoa(){
-	console.log("hemen hasta los huevos");
 	if(elm==nextsrc.length-1){
 		elm=0;
 		if(audioPlayer!=null){
@@ -183,7 +202,9 @@ function berria(elm){
 function berriaB(elm){	
 	media.src = nextsrc[elm];
 	console.log(media.duration);
-	audioPlayer.currentTime=0;
+	if(audioPlayer!=null){
+		audioPlayer.currentTime=0;
+	}
 	playPause();
 	nagusia(elm,balioak);
 	//fetchVideoAndPlay(nextsrc[elm]);
@@ -356,6 +377,7 @@ mute.addEventListener('click',setMute());
 //Aukeratutako bideoen zerrenda erakutsi pantaila eraksuterakoan
 
 document.body.onload = elementuaGehitu(balioak);
+document.body.onload = dantzaAldatuSelect();
 
 function elementuaGehitu (balioakSartu) {
 	var currentDiv = document.getElementById("lista");
@@ -376,7 +398,7 @@ function elementuaGehitu (balioakSartu) {
 	  bideoDiv[v]=document.createElement("div");
 	  bideoDiv[v].className="level-left bideoLista";
 	  listaIzena[v]=document.createElement("p");
-	  listaIzena[v].className="level-item is-clickable title is-4";
+	  listaIzena[v].className="level-item is-clickable title is-6";
 	  listaIzena[v].id=v;
 	  listaIzena[v].setAttribute("onclick","erakutsi(id)");
 	  n=v+1;
@@ -414,7 +436,8 @@ function elementuaGehitu (balioakSartu) {
 	  currentDiv.appendChild(nextDiv[v]);
   }
   gehituBistaratu();
-  audioBistaratu()
+  //audioBistaratu();
+  audioCardBistaratu();
   nagusia(0,balioakSartu);
 }
 
@@ -425,12 +448,12 @@ function nagusia(elem,balioakSartu){
 		if(v==elem){
 			elementua = document.getElementById(v);
 			elementua.style.fontWeight="bold";
-			elementua.className="level-item is-clickable title is-4";
+			elementua.className="level-item is-clickable title is-5";
 		}
 		else{
 			elementua = document.getElementById(v);
 			elementua.style.fontWeight="normal";
-			elementua.className="level-item is-clickable title is-5";
+			elementua.className="level-item is-clickable title is-6";
 			
 		}
 	}
@@ -566,7 +589,7 @@ function gehituOptUstu(){
 
 
 //AUDIO
-
+/*
 function audioBistaratu(){
 	var audioSelect = document.getElementById("audioSelect");
 	//<select name="balioa">
@@ -577,10 +600,10 @@ function audioBistaratu(){
 		audioSelect.options[v]=new Option(audioak[v],audioak[v]);
 	}
 	  
-}
+}*/
 
 function audioAldatu(){
-	var value =document.getElementById("audioSelect").value;
+	var value =aukeratutakoAudioa;
 	audioPlayer=document.getElementById("audioPlayer")
 	console.log("audiselect: "+value);
 	
@@ -601,7 +624,7 @@ function audioAldatu(){
 }
 
 function audioLuzeraAurreraAldatu(){
-	var value =document.getElementById("audioSelect").value;
+	var value =aukeratutakoAudioa;
 	if(value!=""){
 		var gehiketa=audioLuzeera + media.duration;
 		console.log(" AURRERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+media.duration+" audiPlayer berria:"+gehiketa);
@@ -618,7 +641,7 @@ function audioLuzeraAurreraAldatu(){
 }
 
 function audioLuzeraAtzeraAldatu(){
-	var value =document.getElementById("audioSelect").value;
+	var value =aukeratutakoAudioa;
 	if(value!=""){
 		media.onloadedmetadata=function(){
 			console.log(media.duration);
@@ -637,8 +660,269 @@ function audioLuzeraAtzeraAldatu(){
 	}
 }
 
+function audioListaErakutsi(){
+	  var audioLista = document.getElementById("audioLista");
+	  if(audioListaEzkutatuta==0){
+		  audioLista.className="card-content bistaratu";
+		  audioListaEzkutatuta=1;
+	  }
+	  else{
+		  audioLista.className="card-content ezkutatu";
+		  audioListaEzkutatuta=0;
+	  }
+}
+
+function aldatuAudio(balioa){
+	audioPlayer=document.getElementById("audioPlayer")
+	aukeratutakoAudioa=audioak[balioa];
+	console.log("audiselect: "+audioak[balioa]);
+	if(balioa==4){
+		dantzaAukeratuCardErakutsi(balioa);
+	}else{
+		document.getElementById("listaNagusia").className="box";
+		document.getElementById("dantzaAldatuCard").className="ezkutatu";
+		document.getElementById("dantzaCard").className="ezkutatu";
+		balioak=[];
+		 divEzabatu();
+		 nextsrc = [];
+		
+	}
+	if(balioa==0){
+		ixildu=0;
+		setMute();
+		audioPlayer.muted=true;
+		stopMedia();
+		console.log("Bideoko audioa, ixildu:"+ixildu);
+		document.getElementById("audioTitulo").innerHTML="Bideoko Audioa";
+	}else{
+		ixildu=1;
+		setMute();
+		audioPlayer.src="video/J_"+audioak[balioa]+".mp3";	
+		audioPlayer.load();
+		console.log("Audioa:"+audioak[balioa]+"   ixildu:"+ixildu);
+		document.getElementById("audioTitulo").innerHTML=audioak[balioa];
+		stopMedia();
+	}
+}
+
+function entzun(balioa){
+	var audioErreproduktorealabur = document.getElementById("laburEntzunErreproduktorea");
+	aukeratutakoAudioa=audioak[balioa];
+	if(audioLaburErreproduzitzen==0){
+		audioErreproduktorealabur.src="video/J_"+audioak[balioa]+".mp3";
+		audioErreproduktorealabur.load();
+		audioErreproduktorealabur.play();
+		document.getElementById(audioak[balioa]+"entzun").className="is-clickable mr-3 level-item behera fas fa-volume-mute fa-lg";
+		audioLaburErreproduzitzen=1;
+		console.log("audioLaburErreproduzitzen"+audioLaburErreproduzitzen+" info:"+audioak[balioa]+audioErreproduktorealabur.paused);
+	}else{
+		audioErreproduktorealabur.pause();
+		audioErreproduktorealabur.currentTime = 0;
+		document.getElementById(audioak[balioa]+"entzun").className="is-clickable mr-3 level-item behera fas fa-volume-up fa-lg";
+		audioLaburErreproduzitzen=0;
+		console.log("audioLaburErreproduzitzen"+audioLaburErreproduzitzen+" info:"+audioak[balioa]+audioErreproduktorealabur.paused);
+	}
+	
+	
+}
+
+function audioCardBistaratu(){
+	//<select name="balioa">
+	//<option value="A"> A</option>
+	var currentDiv = document.getElementById("audioLista");	  
+	  var listaIzena=[];
+	  var aldatu=[];
+	  var entzun=[]; 
+	  //var kendu=[];
+	  var nextDiv=[];
+	  var audioDiv=[];
+	  var botoiDiv=[];
+	  //var level=[];
+	  console.log("currentDiv."+currentDiv.innerHTML);
+  if(currentDiv.innerHTML==""){
+	  for(var v=0;v<audioak.length;v++){
+		  nextDiv[v]=document.createElement("nav");
+		  nextDiv[v].className=audioak[v]+" level mx-4 my-3 is-mobile bideoAukera";
+		  //lista izena gehitu dokumentura 
+		  audioDiv[v]=document.createElement("div");
+		  audioDiv[v].className="level-left audioLista";
+		  listaIzena[v]=document.createElement("p");
+		  listaIzena[v].value=v;
+		  listaIzena[v].className="level-item is-clickable subtitle is-6";
+		  listaIzena[v].setAttribute("onclick","aldatuAudio(value)");
+		  listaIzena[v].id=audioak[v]+"audioa";
+		  //listaIzena[v].setAttribute("onclick","erakutsi(id)");
+		  if(v==0){
+			  listaIzena[v].innerHTML="Bideoko audioa";  
+		  }else{
+			  listaIzena[v].innerHTML=audioak[v]; 
+		  }	  
+		  audioDiv[v].appendChild(listaIzena[v]);
+		  nextDiv[v].appendChild(audioDiv[v]);
+		  currentDiv.appendChild(nextDiv[v]);
+		  
+		  //aldatu botoia gehitu	 
+		  botoiDiv[v]=document.createElement("div");
+		  botoiDiv[v].className="level-right botoiLista";
+		  aldatu[v]=document.createElement("i");
+		  aldatu[v].value=v;
+		  aldatu[v].setAttribute("onclick","aldatuAudio(value)");
+		  aldatu[v].className="level-item is-clickable gora fas fa-exchange-alt fa-lg";
+		  
+		  //entzun botoia gehitu
+		  
+		  if(v!=0){
+			  entzun[v]=document.createElement("i");
+			  entzun[v].value=v; 
+			  entzun[v].setAttribute("onclick","entzun(value)");
+			  entzun[v].id=audioak[v]+"entzun";
+			  entzun[v].className="is-clickable mr-3 level-item behera fas fa-volume-up fa-lg";
+			  //behera[v].innerHTML="Jeitsi";
+			  botoiDiv[v].appendChild(entzun[v]);
+		  }	  
+		  
+		  botoiDiv[v].appendChild(aldatu[v]);
+		  nextDiv[v].appendChild(botoiDiv[v]);
+		  currentDiv.appendChild(nextDiv[v]);	  
+	  }
+  }
+ }
 
 
+
+
+
+function dantzaAukeratuCardErakutsi(balioa){
+	 var audioLista = document.getElementById("dantzaAldatuCard");
+	 var tituluak=document.getElementsByClassName("dantzaTitulo");
+	 aukeratutakoAudioa=audioak[balioa];
+	 for(var v=0; v<tituluak.length;v++){
+		 tituluak[v].innerHTML=audioak[balioa];
+	}
+	 document.getElementById("listaNagusia").className="ezkutatu";
+	 document.getElementById("dantzaCard").className="ezkutatu";
+	 
+	 audioLista.className="box";
+	 balioak=[];
+	 divEzabatu();
+	 nextsrc = [];
+	 media.src=null;
+	 stopMedia();
+}
+
+function dantzaAldatuSelect(){
+	var gehituSelect = document.getElementById("gehituSelect");
+	gehituArraySortu();
+	gehituOptUstu();
+	
+	//<select name="balioa">
+	//<option value="A"> A</option>
+	
+	for(var v=0;v<pausuak.length;v++){
+		var option = document.createElement("option");
+		  option.text = pausuak[v];
+		switch (pausuak[v].charAt(0)){
+		case "A":
+			document.getElementById("gehituSelectA").add(option);
+			break;
+		case "B":
+			document.getElementById("gehituSelectB").add(option);
+			break;
+		case "C":
+			document.getElementById("gehituSelectC").add(option);
+			break;
+		default:
+			break;
+		}
+	}
+	  
+}
+
+function dantzaPausuakAukeratu(){
+		var valueA =document.getElementById("gehituSelectA").value;
+		var valueB =document.getElementById("gehituSelectB").value;   
+		var valueC =document.getElementById("gehituSelectC").value;
+		balioak=[];
+		balioak.push(valueA);
+		balioak.push(valueB);
+		balioak.push(valueC);
+		console.log("gehituPausua:"+valueA+valueB+valueC+" balioa:"+balioak);
+		divAukeraEzabatu();
+		elementuaAukeraGehitu(balioak);
+		balioakPasa();
+		document.getElementById("listaNagusia").className="ezkutatu";
+		document.getElementById("dantzaAldatuCard").className="ezkutatu";
+		document.getElementById("dantzaCard").className="box";
+		
+}
+
+function divAukeraEzabatu(){
+	var nereDiv=document.getElementById("listaDantza");
+	nereDiv.innerHTML='';
+}
+
+
+function elementuaAukeraGehitu (balioakSartu) {
+	var currentDiv = document.getElementById("listaDantza");
+	var n=0;	  
+	var listaIzena=[];
+	  var nextDiv=[];
+	  var bideoDiv=[];
+	  
+	  for(var v=0;v<balioakSartu.length;v++){
+		  nextDiv[v]=document.createElement("nav");
+		  nextDiv[v].className=balioakSartu[v]+" level is-mobile bideoAukera";
+		  //lista izena gehitu dokumentura 
+		  bideoDiv[v]=document.createElement("div");
+		  bideoDiv[v].className="level-left bideoLista";
+		  listaIzena[v]=document.createElement("p");
+		  listaIzena[v].className="level-item is-clickable title is-6";
+		  listaIzena[v].id=v;
+		  listaIzena[v].setAttribute("onclick","erakutsi(id)");
+		  n=v+1;
+		  listaIzena[v].innerHTML=n+". "+balioakSartu[v];
+		  bideoDiv[v].appendChild(listaIzena[v]);
+		  nextDiv[v].appendChild(bideoDiv[v]);
+		  currentDiv.appendChild(nextDiv[v]);
+	  }
+	  //audioBistaratu();
+	  nagusia(0,balioakSartu);
+}
+
+function dantzaCardAldatu(){
+	document.getElementById("listaNagusia").className="ezkutatu";
+	document.getElementById("dantzaAldatuCard").className="box";
+	document.getElementById("dantzaCard").className="ezkutatu";
+}
+
+function danCardAldatu(){
+	audioPlayer=document.getElementById("audioPlayer");
+	ixildu=1;
+	setMute();
+	audioPlayer.src="video/J_"+audioak[4]+".mp3";	
+	audioPlayer.load();
+	console.log("Audioa:"+audioak[4]+"   ixildu:"+ixildu);
+	document.getElementById("audioTitulo").innerHTML=audioak[4];
+	aukeratutakoAudioa=audioak[4];
+	elementuaAukeraGehitu(balioak);
+	document.getElementById("listaNagusia").className="ezkutatu";
+	document.getElementById("dantzaAldatuCard").className="ezkutatu";
+	document.getElementById("dantzaCard").className="box";
+	var tituluak=document.getElementsByClassName("dantzaTitulo");
+	 for(var v=0; v<tituluak.length;v++){
+		 tituluak[v].innerHTML=audioak[4];
+	}
+}
+/*
+media.addEventListener("timeupdate", function(){
+    // check whether we have passed 5 minutes,
+    // current time is given in seconds
+    if(this.currentTime >= 5 ) {
+        // pause the playback
+        this.pause();
+    }
+});
+*/
 
 
 

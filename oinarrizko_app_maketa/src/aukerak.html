@@ -11,12 +11,11 @@
 </head>
 
 <body>
-<section class="section is-fullwidth">
+<section class="section is-small is-fullwidth">
 	<form action="../index.html">
 		<button class="button is-rounded" type="submit"><i class="fas fa-arrow-left"></i></button>
 	</form>
 	<h1 class="title is-1 is-spaced">Oinarrizko App maketa</h1>
-	<h1 class="subtitle is-4">Pantaila honetan erabiltzaileari pauso desberdinak aurkeztuko zaizkio, eta berak aukeratuko ditu berak ondoren ikusteko</h1>
 </section>
 <!-- <h2>Bideo erreproduktore desberdinak</h2> -->
 
@@ -52,7 +51,7 @@
     <li id="audioLi">      
       <a onclick="divAudio()">
         <span class="icon is-medium"><i class="fas fa-music" aria-hidden="true"></i></span>
-        <span>Audioak</span>
+        <span>Audio erreproduktorea</span>
       </a>
     </li>
   </ul>
@@ -65,9 +64,14 @@
 
 <div class="bistaratu" id="bideoAukeratu">
 	<section class="section">
-		<h3 class="subtitle is-3">Bideoak aukeratu eta segidan bistaratu</h3>
-	  
-		<div class=" mt-4  pt-4 columns is-desktop is-multiline is-centered">
+	  	<nav class="breadcrumb is-centered is-large has-bullet-separator" aria-label="breadcrumbs">
+		  <ul>
+		  	<li id="pertsonalizatua" class="is-active"><a onclick="pertsonalizatuaDiv()" aria-current="page">Dantza pertsonalizatua</a></li>
+		    <li id="jota"><a onclick="jotaDiv()" >Jota / Porrue edo arin-arina (A-B-C)</a></li>		    
+		  </ul>
+		</nav>
+		<h2 class="subtitle is-4 is-spaced" id="aukerarurakoDesk">Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!</h2>
+		<div class=" mt-2 columns is-desktop is-multiline is-centered">
 		  <div class="column mx-5">
 		  		<article class="panel is-info">
 		  		<div class="panel-heading">
@@ -75,7 +79,7 @@
 					  <!-- Left side -->
 					  <div class="level-left">
 					    <div class="level-item">
-					      <p class=" panel-heading ">A Dantza</p>
+					      <p class=" panel-heading ">A - Puntapioa </p>
 					    </div>
 					  </div>
 					
@@ -86,16 +90,16 @@
 					</nav>
 	  			</div>	
 	  			
-	  			<a class="panel-block px-4 py-4">
-					<input type="checkbox" class="A" onclick="egiaztatu(value)" value="A_01_Aurretik">
+	  			<label class="panel-block px-4 py-4">
+					<input type="checkbox" class="A" onclick="egiaztatu(value)" id="A_01" value="A_01_Aurretik">
 					<p>A_01_Aurretik</p>
-					<p class="pl-5" id="A_01_Aurretik"></p>
-	  			</a>  
-	  			<a class="panel-block px-4 py-4">
-					<input type="checkbox" class="A" onclick="egiaztatu(value)" value="A_09_Aurretik">
+					<p class="pl-3" id="A_01_Aurretik"></p>
+	  			</label>  
+	  			<label class="panel-block px-4 py-4">
+					<input type="checkbox" class="A" onclick="egiaztatu(value)" id="A_09" value="A_09_Aurretik">
 				  	<p>A_09_Aurretik</p>
-				  	<p class="pl-5" id="A_09_Aurretik"></p>
-	  			</a>  
+				  	<p class="pl-3" id="A_09_Aurretik"></p>
+	  			</label>  
 		  </article>
 		  </div>
 		  <div class="column mx-5">
@@ -105,7 +109,7 @@
 					  		<!-- Left side -->
 						  <div class="level-left">
 						    <div class="level-item">
-						      <p class=" panel-heading ">B Dantza</p>
+						      <p class=" panel-heading ">B - Harahanakoa</p>
 						    </div>
 						  </div>
 					
@@ -117,14 +121,14 @@
 	  			</div>	
 	  			
 				<label class="panel-block px-4 py-4">	
-					<input type="checkbox" class="B" onclick="egiaztatu(value)" value="B_01_Aurretik">		
+					<input type="checkbox" class="B" onclick="egiaztatu(value)" id="B_01" value="B_01_Aurretik">		
 				  	<p>B_01_Aurretik</p>			  		
-				  	<p class="pl-5" id="B_01_Aurretik"></p>
+				  	<p class="pl-3" id="B_01_Aurretik"></p>
 	  			</label> 			
 	  			<label class="panel-block px-4 py-4">	
-	  				<input type="checkbox" class="B" onclick="egiaztatu(value)" value="B_07_2_Aurretik">			
+	  				<input type="checkbox" class="B" onclick="egiaztatu(value)" id="B_07" value="B_07_2_Aurretik">			
 				  	<p>B_07_2_Aurretik</p>	  					  		
-				  	<p class="pl-5"id="B_07_2_Aurretik"></p>
+				  	<p class="pl-3"id="B_07_2_Aurretik"></p>
 	  			</label>  
 		  </article>
 		  </div>
@@ -135,7 +139,7 @@
 						  <!-- Left side -->
 						  <div class="level-left">
 						    <div class="level-item">
-						      <p class=" panel-heading ">C Dantza</p>
+						      <p class=" panel-heading ">C - Baltseoa</p>
 						    </div>
 						  </div>
 						
@@ -146,16 +150,16 @@
 						</nav>
 		  			</div>	
 		  			
-		  			<a class="panel-block px-4 py-4">
-						<input type="checkbox" class="C" onclick="egiaztatu(value)" value="C_01_A_Aurretik">
+		  			<label class="panel-block px-4 py-4">
+						<input type="checkbox" class="C" onclick="egiaztatu(value)" id="C_01" value="C_01_A_Aurretik">
 						<p>C_01_A_Aurretik</p>	
-						<p  class="pl-5" id="C_01_A_Aurretik"></p>
-		  			</a>  
-		  			<a class="panel-block px-4 py-4">
-						<input type="checkbox" class="C" onclick="egiaztatu(value)" value="C_Bikotean_04">
+						<p  class="pl-3" id="C_01_A_Aurretik"></p>
+		  			</label>  
+		  			<label class="panel-block px-4 py-4">
+						<input type="checkbox" class="C" onclick="egiaztatu(value)" id="C_Bi" value="C_Bikotean_04">
 					  	<p class="">C_Bikotean_04</p>			  		
-					  	<p class="pl-5" id="C_Bikotean_04"></p>
-		  			</a>  
+					  	<p class="pl-3" id="C_Bikotean_04"></p>
+		  			</label>  
 			  </article>
 		  
 		  </div>

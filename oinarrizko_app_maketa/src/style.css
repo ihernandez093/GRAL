@@ -14,13 +14,12 @@
     font-style: normal;
 }
 
-video {
+/*video {*/
   /*border: 1px solid black;*/
 /*   width: 100%; */
 /*   margin-left: auto; */
 /*   margin-right: auto; */
-}
-
+/*}*/
 /*p {
   position: absolute;
   top: 310px;
@@ -39,17 +38,12 @@ video {
 
 }
 
-.lista{
-	width:28%;
-	float:left;
-}
-*/
 
-/*width: 400px; 
+width: 400px; 
   margin-left: -200px; */
 .controls {
   visibility: hidden;
-  opacity: 0.5;
+  /*opacity: 0.5;
   width: 95%;
   
   border-radius: 10px;
@@ -57,7 +51,8 @@ video {
   left:2%;
   position: relative;
 
-  /*left: 50%;*/
+  left: 50%;*/
+  margin-top:-9px;
 
   background-color: black;
   box-shadow: 3px 3px 5px black;
@@ -222,6 +217,14 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.ezkutatu{
+	display:none;
+}
+
+.bistaratu{
+	display: contents;
 }
 
 /*BOTOIAK
