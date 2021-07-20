@@ -6,6 +6,7 @@ let balioak=[];
 
 var pausuak=[ "A_01_Aurretik", "A_09_Aurretik", "B_01_Aurretik", "B_07_2_Aurretik", "C_01_A_Aurretik", "C_Bikotean_04" ];
 var audioak=["","A","B","C","OSOA"];
+var denborak=[[1.33 , 17.20],[1.33 , 17.20],[1.33 , 17.60],[1.33 , 17.60],[1.99, 28.56],[1.99 , 28.56]];
 var gehitu=[];
 var perts=true;
 
@@ -15,10 +16,8 @@ var nextsrc = [];
 for(var value of urlParams.values()) {
 	if(value=="true"){
 		perts=true;
-		console.log("PERTS: "+perts);
 	}else if(value=="false"){		
 		perts=false;
-		console.log("PERTS: "+perts);
 	}else{
 		console.log(value);
 		balioak.push(value);
@@ -66,8 +65,8 @@ document.body.onload=hasieratu();
 	
 function hasieratu(){
 	if(!perts){
-		console.log("HEMEN");
 		danCardAldatu();
+		media.currentTime=denborak[0][0];
 	}
 }
 //https://stackoverflow.com/questions/2551859/html-5-video-or-audio-playlist
@@ -129,8 +128,16 @@ stop.addEventListener('click', stopMedia);
 media.addEventListener('ended', stopMediaBideo);
 
 function stopMedia() {
+	  
+	  elm=nextsrc.length-1;
+	  hurrengoa();
 	  media.pause();
-	  media.currentTime = 0;
+	  if(!perts){
+		  media.currentTime =denborak[0][0];
+	  }else{
+		  media.currentTime = 0;
+	  }
+	  
 	  playIcon.className="fas fa-play fa-lg";
 	  if(audioPlayer!=null){
 		  audioPlayer.pause();	  
@@ -141,15 +148,19 @@ function stopMedia() {
 	  clearInterval(intervalRwd);
 	  clearInterval(intervalFwd);
 	}
+
 function stopMediaBideo() {
 	  media.pause();
+	  audioPlayer.pause();
 	  media.currentTime = 0;
 	  //playIcon.className="fas fa-play fa-lg";
 	  rwd.classList.remove('active');
 	  fwd.classList.remove('active');
 	  clearInterval(intervalRwd);
 	  clearInterval(intervalFwd);
-	  setTimeout(() => {hurrengoa();}, 1);
+	  
+	  //setTimeout(() => {hurrengoa();}, 1);
+	  hurrengoa();
 	}
 
 rwd.addEventListener('click', aurrekoa);
@@ -176,13 +187,13 @@ function hurrengoa(){
 	if(elm==nextsrc.length-1){
 		elm=0;
 		if(audioPlayer!=null){
-		audioLuzeraAurreraAldatu();
+		//audioLuzeraAurreraAldatu();
 		}
 		berria(elm);	
 	}else{
 		++elm;
 		if(audioPlayer!=null){
-			audioLuzeraAurreraAldatu();
+			//audioLuzeraAurreraAldatu();
 			}
 		berria(elm);	
 	}
@@ -191,16 +202,27 @@ function hurrengoa(){
 function berria(elm){
 	
 	media.src = nextsrc[elm];
+	denboraAldatu();
 	media.play();
+	audioPlayer.play();
 	playIcon.className="fas fa-pause fa-lg";
 	nagusia(elm,balioak);
 	console.log(media.duration);
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src+" berriaN");
+	media.setAttribute('poster', "video/white.jpg");
+	
+}
+
+function denboraAldatu(){
+	if(!perts){
+		media.currentTime=denborak[pausuak.indexOf(balioak[elm])][0];
+	}	
 }
 
 function berriaB(elm){	
 	media.src = nextsrc[elm];
+	denboraAldatu();
 	console.log(media.duration);
 	if(audioPlayer!=null){
 		audioPlayer.currentTime=0;
@@ -266,7 +288,7 @@ abiadura.addEventListener('click',setAbiadura);
 		
 		if (media.playbackRate==1){
 			media.playbackRate=0.5;
-			abiaduraIcon.style.color="hsl(217, 71%, 53%)";
+			abiaduraIcon.style.color="#EB6F25";
 			audioPlayer.playbackRate=0.5;			
 		} else if (media.playback==0.5){
 			media.playbackRate=5.0;
@@ -288,7 +310,7 @@ loop.addEventListener('click',setLoop);
 			media.loop=false;
 			audioPlayer.loop=false;			
 		}else{
-			loopIcon.style.color="hsl(217, 71%, 53%)";
+			loopIcon.style.color="#EB6F25";
 			media.loop=true;
 			audioPlayer.loop=true;
 			
@@ -321,7 +343,7 @@ function fullScreen() {
 		}
 
 var isFullScreen = function() {
-	   return !!(document.fullscreen || document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
+	   return !!(document.fullscreen || document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenelment || document.fullscreenelment);
 	}
 
 var setFullscreenData = function(state) {
@@ -329,7 +351,7 @@ var setFullscreenData = function(state) {
 	}
 
 document.addEventListener('fullscreenchange', function(e) {
-	   setFullscreenData(!!(document.fullscreen || document.fullscreenElement));
+	   setFullscreenData(!!(document.fullscreen || document.fullscreenelment));
 	});
 	document.addEventListener('webkitfullscreenchange', function() {
 	   setFullscreenData(!!document.webkitIsFullScreen);
@@ -338,7 +360,7 @@ document.addEventListener('fullscreenchange', function(e) {
 	   setFullscreenData(!!document.mozFullScreen);
 	});
 	document.addEventListener('msfullscreenchange', function() {
-	   setFullscreenData(!!document.msFullscreenElement);
+	   setFullscreenData(!!document.msFullscreenelment);
 	});
 
 	
@@ -365,7 +387,7 @@ mute.addEventListener('click',setMute());
 			console.log("Mute:"+false+ixildu);
 			
 		}else{	
-			muteIcon.style.color="hsl(217, 71%, 53%)";
+			muteIcon.style.color="#EB6F25";
 			media.muted=true;
 			ixildu=0;
 			console.log("Mute:"+true+ixildu);
@@ -376,10 +398,10 @@ mute.addEventListener('click',setMute());
 
 //Aukeratutako bideoen zerrenda erakutsi pantaila eraksuterakoan
 
-document.body.onload = elementuaGehitu(balioak);
+document.body.onload = elmentuaGehitu(balioak);
 document.body.onload = dantzaAldatuSelect();
 
-function elementuaGehitu (balioakSartu) {
+function elmentuaGehitu (balioakSartu) {
 	var currentDiv = document.getElementById("lista");
 	var n=0;	  
   var listaIzena=[];
@@ -442,18 +464,18 @@ function elementuaGehitu (balioakSartu) {
 }
 
 //Erreproduzitzen ari den balioa beltzen jarri
-function nagusia(elem,balioakSartu){
-	var elementua;
+function nagusia(elm,balioakSartu){
+	var elmentua;
 	for(var v=0;v<balioakSartu.length;v++){
-		if(v==elem){
-			elementua = document.getElementById(v);
-			elementua.style.fontWeight="bold";
-			elementua.className="level-item is-clickable title is-5";
+		if(v==elm){
+			elmentua = document.getElementById(v);
+			elmentua.style.fontWeight="bold";
+			elmentua.className="level-item is-clickable title is-5";
 		}
 		else{
-			elementua = document.getElementById(v);
-			elementua.style.fontWeight="normal";
-			elementua.className="level-item is-clickable title is-6";
+			elmentua = document.getElementById(v);
+			elmentua.style.fontWeight="normal";
+			elmentua.className="level-item is-clickable title is-6";
 			
 		}
 	}
@@ -473,7 +495,7 @@ function igo(value){
 	if(elm!=0){
 	console.log("gora:"+array_move(balioak,elm,elm-1));
 	divEzabatu();
-	elementuaGehitu(balioak);
+	elmentuaGehitu(balioak);
 	balioakPasa();
 	}	
 }
@@ -484,7 +506,7 @@ function jeitsi(value){
 	if(elm!=balioak.length-1){
 		console.log("gora:"+array_move(balioak,elm,elm+1));
 		divEzabatu();
-		elementuaGehitu(balioak);
+		elmentuaGehitu(balioak);
 		balioakPasa();
 	}
 	
@@ -495,13 +517,13 @@ function kenduPausua(value){
 	elm=value;
 	console.log("kendu:"+balioak.splice(elm,1)+" balioa:"+balioak);
 	divEzabatu();
-	elementuaGehitu(balioak);
+	elmentuaGehitu(balioak);
 	balioakPasa();
 }
 
 
 
-//JavaScripten array batean elementuak toki abtetik bestera mugitzeko funtzioa
+//JavaScripten array batean elmentuak toki abtetik bestera mugitzeko funtzioa
 function array_move(arr, old_index, new_index) {
     if (new_index >= arr.length) {
         var k = new_index - arr.length + 1;
@@ -572,7 +594,7 @@ function gehituPausua(){
 		balioak.push(value)
 		console.log("gehituPausua:"+value+" balioa:"+balioak);
 		divEzabatu();
-		elementuaGehitu(balioak);
+		elmentuaGehitu(balioak);
 		balioakPasa();
 	}
 }
@@ -678,7 +700,10 @@ function aldatuAudio(balioa){
 	console.log("audiselect: "+audioak[balioa]);
 	if(balioa==4){
 		dantzaAukeratuCardErakutsi(balioa);
+		perts=false;
+		media.currentTime=denborak[0][0];
 	}else{
+		perts=true;
 		document.getElementById("listaNagusia").className="box";
 		document.getElementById("dantzaAldatuCard").className="ezkutatu";
 		document.getElementById("dantzaCard").className="ezkutatu";
@@ -848,7 +873,7 @@ function dantzaPausuakAukeratu(){
 		balioak.push(valueC);
 		console.log("gehituPausua:"+valueA+valueB+valueC+" balioa:"+balioak);
 		divAukeraEzabatu();
-		elementuaAukeraGehitu(balioak);
+		elmentuaAukeraGehitu(balioak);
 		balioakPasa();
 		document.getElementById("listaNagusia").className="ezkutatu";
 		document.getElementById("dantzaAldatuCard").className="ezkutatu";
@@ -862,7 +887,7 @@ function divAukeraEzabatu(){
 }
 
 
-function elementuaAukeraGehitu (balioakSartu) {
+function elmentuaAukeraGehitu (balioakSartu) {
 	var currentDiv = document.getElementById("listaDantza");
 	var n=0;	  
 	var listaIzena=[];
@@ -876,9 +901,9 @@ function elementuaAukeraGehitu (balioakSartu) {
 		  bideoDiv[v]=document.createElement("div");
 		  bideoDiv[v].className="level-left bideoLista";
 		  listaIzena[v]=document.createElement("p");
-		  listaIzena[v].className="level-item is-clickable title is-6";
+		  listaIzena[v].className="level-item title is-6";
 		  listaIzena[v].id=v;
-		  listaIzena[v].setAttribute("onclick","erakutsi(id)");
+		  //listaIzena[v].setAttribute("onclick","erakutsi(id)");
 		  n=v+1;
 		  listaIzena[v].innerHTML=n+". "+balioakSartu[v];
 		  bideoDiv[v].appendChild(listaIzena[v]);
@@ -897,14 +922,14 @@ function dantzaCardAldatu(){
 
 function danCardAldatu(){
 	audioPlayer=document.getElementById("audioPlayer");
-	ixildu=1;
+	ixildu=0;
 	setMute();
 	audioPlayer.src="video/J_"+audioak[4]+".mp3";	
 	audioPlayer.load();
 	console.log("Audioa:"+audioak[4]+"   ixildu:"+ixildu);
 	document.getElementById("audioTitulo").innerHTML=audioak[4];
 	aukeratutakoAudioa=audioak[4];
-	elementuaAukeraGehitu(balioak);
+	elmentuaAukeraGehitu(balioak);
 	document.getElementById("listaNagusia").className="ezkutatu";
 	document.getElementById("dantzaAldatuCard").className="ezkutatu";
 	document.getElementById("dantzaCard").className="box";
@@ -913,16 +938,17 @@ function danCardAldatu(){
 		 tituluak[v].innerHTML=audioak[4];
 	}
 }
-/*
+
 media.addEventListener("timeupdate", function(){
     // check whether we have passed 5 minutes,
     // current time is given in seconds
-    if(this.currentTime >= 5 ) {
-        // pause the playback
-        this.pause();
-    }
+	if(!perts){
+		if(this.currentTime >= denborak[pausuak.indexOf(balioak[elm])][1] ) {
+			audioPlayer.pause();
+	        hurrengoa();
+	    }
+	}    
 });
-*/
 
 
 

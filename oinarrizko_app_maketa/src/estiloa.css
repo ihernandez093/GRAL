@@ -52,5 +52,16 @@ table, th, td{
 	display: contents;
 }
 
+.naranja{
+	background-color:#EB6F25 !important;
+	color:#fff !important;
+}
 
+.naranja-kolorea{
+	color:#EB6F25 !important;
+}
 
+.naranja-bordea{
+	border-bottom-color:#EB6F25 !important;
+	color: #EB6F25 !important;
+}

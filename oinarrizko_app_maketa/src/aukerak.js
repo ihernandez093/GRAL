@@ -109,11 +109,10 @@ function ugariAukeratu(balioa){
 
 //QueryString-a bidali
 function queryh(){
-	if(aBalio.length==0){
+	if((aBalio.length==0)||(!perts && aBalio.length<3)){
 		//document.getElementById("alerta").innerHTML="Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!";
 		document.getElementById("notifikazioa").setAttribute('style', 'display:block;');
-	}
-	else{
+	}else{
 		document.getElementById("alerta").innerHTML=null;
 		aldatu();
 		console.log(querystring);
@@ -123,6 +122,7 @@ function queryh(){
 }
 
 function aldatu(){
+	aBalio.sort();
 	querystring=querystring+"balioa="+aBalio[0];
 	for(var a=1;a<aBalio.length;a++){
 		querystring=querystring+"&balioa="+aBalio[a];
@@ -149,7 +149,7 @@ function divBideo(){
 	bideo.className="bistaratu";
 	audio.className="ezkutatu";	
 	
-	bideoLi.className='is-active';
+	bideoLi.className='naranja-bordea';
 	audioLi.className='';
 }
 
@@ -164,7 +164,7 @@ function divAudio(){
 	bideo.className="ezkutatu";	
 	
 	bideoLi.className='';
-	audioLi.className='is-active';
+	audioLi.className='naranja-bordea';
 }
 
 function audioAldatu(){
@@ -206,6 +206,8 @@ function pertsonalizatuaDiv(){
 	perts=true;
 	document.getElementById("pertsonalizatua").classList="is-active";
 	document.getElementById("jota").classList="";
+	document.getElementById("pertsonalizatuaA").classList="title is-active";
+	document.getElementById("jotaA").classList="naranja-kolorea";
 	document.getElementById("aukerarurakoDesk").innerHTML="Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!";
 	checkAll(false);
 	aukerakHasieratu();
@@ -216,6 +218,8 @@ function jotaDiv(){
 	perts=false;
 	document.getElementById("pertsonalizatua").classList="";
 	document.getElementById("jota").classList="is-active";
+	document.getElementById("pertsonalizatuaA").classList="naranja-kolorea";
+	document.getElementById("jotaA").classList="title is-active";
 	document.getElementById("aukerarurakoDesk").innerHTML="Pausu talde bakoitzetik (A-B-C) aukera bat aukeratu eta dantzan hasi!";
 	checkAll(false);
 	aukerakHasieratu();

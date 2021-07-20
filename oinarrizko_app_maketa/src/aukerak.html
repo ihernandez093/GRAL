@@ -3,20 +3,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" name="description" content="JavaScript Client Herald">
-  <title>Oinarrizko App maketa</title>
+  <title>Aiko Dantza Eskola</title>
   <link rel="stylesheet" type="text/css" href="./estiloa.css"/>
   <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.2-web/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="icon" type="image/png" href="./icon.png">
   <script src="aukerak.js"></script>
 </head>
 
 <body>
-<section class="section is-small is-fullwidth">
-	<form action="../index.html">
-		<button class="button is-rounded" type="submit"><i class="fas fa-arrow-left"></i></button>
-	</form>
-	<h1 class="title is-1 is-spaced">Oinarrizko App maketa</h1>
-</section>
+<div class="mx-4 my-4 px-2 py-2">
+  		<nav class="level is-mobile">
+  			<div class="level-left">
+  				<form action="../index.html">
+				<button class="button is-rounded" style="background: white" type="submit"><i class="fas fa-arrow-left"></i></button>
+				</form>
+  			</div>
+  			<div class="level-item has-text-centered">
+  				<img src="logo.png" alt="" style="height: 40px;">
+  			</div>
+  		</nav>
+</div>
 <!-- <h2>Bideo erreproduktore desberdinak</h2> -->
 
 <!-- <table class="tableIkustezina"> -->
@@ -40,16 +47,16 @@
 <!-- </table> -->
 
 <!--  TABS ERABILI JUSTU NAHI DUDANA -->
-<div class="tabs is-large is-centered is-fullwidth">
+<div class="tabs is-large is-centered naranja-bordea is-fullwidth">
   <ul>
-    <li class="is-active " id="bideoLi">
-      <a onclick="divBideo()">
-        <span class="icon is-medum"><i class="fas fa-film" aria-hidden="true"></i></span>
+    <li >
+      <a class="naranja-bordea" onclick="divBideo()" id="bideoLi">
+        <span class="icon is-medium"><i class="fas fa-film" aria-hidden="true"></i></span>
         <span>Pausoen bideoak</span>
       </a>
     </li>
-    <li id="audioLi">      
-      <a onclick="divAudio()">
+    <li >      
+      <a onclick="divAudio()" id="audioLi">
         <span class="icon is-medium"><i class="fas fa-music" aria-hidden="true"></i></span>
         <span>Audio erreproduktorea</span>
       </a>
@@ -64,22 +71,22 @@
 
 <div class="bistaratu" id="bideoAukeratu">
 	<section class="section">
-	  	<nav class="breadcrumb is-centered is-large has-bullet-separator" aria-label="breadcrumbs">
+	  	<nav class="breadcrumb is-centered is-large has-bullet-separator naranja-kolorea" aria-label="breadcrumbs">
 		  <ul>
-		  	<li id="pertsonalizatua" class="is-active"><a onclick="pertsonalizatuaDiv()" aria-current="page">Dantza pertsonalizatua</a></li>
-		    <li id="jota"><a onclick="jotaDiv()" >Jota / Porrue edo arin-arina (A-B-C)</a></li>		    
+		  	<li id="pertsonalizatua" class="is-active"><a class="title" id="pertsonalizatuaA"onclick="pertsonalizatuaDiv()" aria-current="page">Dantza pertsonalizatua</a></li>
+		    <li id="jota"><a onclick="jotaDiv()"  id="jotaA" class="naranja-kolorea">Jota / Porrue edo arin-arina (A-B-C)</a></li>		    
 		  </ul>
 		</nav>
 		<h2 class="subtitle is-4 is-spaced" id="aukerarurakoDesk">Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!</h2>
 		<div class=" mt-2 columns is-desktop is-multiline is-centered">
 		  <div class="column mx-5">
 		  		<article class="panel is-info">
-		  		<div class="panel-heading">
+		  		<div class="panel-heading naranja">
 					<nav class="level is-mobile">
 					  <!-- Left side -->
 					  <div class="level-left">
 					    <div class="level-item">
-					      <p class=" panel-heading ">A - Puntapioa </p>
+					      <p class=" panel-heading naranja">A - Puntapioa </p>
 					    </div>
 					  </div>
 					
@@ -103,13 +110,13 @@
 		  </article>
 		  </div>
 		  <div class="column mx-5">
-		  <article class="panel is-info">
-		  		<div class="panel-heading">
+		  <article class="panel ">
+		  		<div class="panel-heading naranja">
 					<nav class="level is-mobile">
 					  		<!-- Left side -->
 						  <div class="level-left">
 						    <div class="level-item">
-						      <p class=" panel-heading ">B - Harahanakoa</p>
+						      <p class=" panel-heading naranja ">B - Harahanakoa</p>
 						    </div>
 						  </div>
 					
@@ -134,12 +141,12 @@
 		  </div>
 		  <div class="column mx-5">
 			  	<article class="panel is-info">
-			  		<div class="panel-heading">
+			  		<div class="panel-heading naranja">
 						<nav class="level is-mobile">
 						  <!-- Left side -->
 						  <div class="level-left">
 						    <div class="level-item">
-						      <p class=" panel-heading ">C - Baltseoa</p>
+						      <p class=" panel-heading naranja">C - Baltseoa</p>
 						    </div>
 						  </div>
 						
@@ -168,12 +175,12 @@
 	    
 	  
 		<div class="columns is-centered is-mobile py-5 is-narrow">
-				<button  class="button is-info is-large mt-6" onclick="queryh()" value="BideoaBistaratu">Dantzan hasi! </button>
+				<button  class="button naranja is-large mt-6" onclick="queryh()" value="BideoaBistaratu">Dantzan hasi! </button>
 		  <p id="alerta">
 		</div>
-		<div id="notifikazioa" class="ezkutatu notification is-link">
+		<div id="notifikazioa" class="ezkutatu notification is-danger">
 	  		<button class="delete" id="kendu"></button>
-	  		"Gogoratu ikusi nahi duzun bidea aukeratu behar duzula!"
+	  		"Gogoratu ikusi nahi dituzun bideoak aukeratu behar dituzula!"
 	  </div>
   </section>
 </div>
@@ -195,7 +202,7 @@
 					</select>
 				</div>			
 				<div class="level-item ml-3 my-5  py-5">
-					<input type="submit" class="button is-info is-large " onclick="audioAldatu()"value="Audioa entzun!"/>
+					<input type="submit" class="button naranja is-large " onclick="audioAldatu()"value="Audioa entzun!"/>
 				</div>
 			</div>
 			<div class="level-right is-centered mr-6 ml-2 my-5  py-5">
@@ -206,12 +213,5 @@
 		</nav>
 	</section>
 </div>
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-    	Oinarrizko App maketa - Iker Hernandez  
-    </p>
-  </div>
-</footer>
 </body>
 </html>

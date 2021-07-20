@@ -55,13 +55,13 @@ width: 400px;
   margin-top:-9px;
 
   background-color: black;
-  box-shadow: 3px 3px 5px black;
+  box-shadow: 1px 1px 2px black;
   transition: 1s all;
   display: flex;
 }
 
 .buttonB, .controls {
-  background: linear-gradient(to bottom,#222,#666);
+  background: linear-gradient(to bottom,#444,#666);
 }
 
 .player:hover .controls, player:focus .controls {
@@ -97,11 +97,11 @@ width: 400px;
 }
 
 .play {
-  border-radius: 10px 0 0 10px;
+  border-radius: 5px 0 0 5px;
 }
 
 .fwd {
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 .timer {
@@ -197,7 +197,7 @@ video{
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #EB6F25;
 }
 
 input:focus + .slider {
@@ -225,6 +225,11 @@ input:checked + .slider:before {
 
 .bistaratu{
 	display: contents;
+}
+
+.naranja{
+	color:#EB6F25 !important;
+	
 }
 
 /*BOTOIAK
