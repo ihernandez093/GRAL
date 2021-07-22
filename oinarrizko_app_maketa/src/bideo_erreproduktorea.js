@@ -103,25 +103,31 @@ function playPause(){
 }
 //
 function playPauseMedia() {
-	rwd.classList.remove('active');
-	fwd.classList.remove('active');
-	clearInterval(intervalRwd);
-	clearInterval(intervalFwd);
-	  if(media.paused) {
-		playIcon.className="fas fa-pause fa-lg";
-		console.log("hemen erreproduzitzen");
-	    media.play();
-	    if(audioPlayer!=null){
-	    	audioPlayer.play();
-	    }
-	  } else {
-		playIcon.className="fas fa-play fa-lg";
-		console.log("hemen geldirik");
-	    media.pause();
-	    if(audioPlayer!=null){
-	    	audioPlayer.pause();
-	    }
-	  }
+	if(balioak.length!=0){
+		document.getElementById("notifikazioa").setAttribute('style', 'display:none;');
+		rwd.classList.remove('active');
+		fwd.classList.remove('active');
+		clearInterval(intervalRwd);
+		clearInterval(intervalFwd);
+		  if(media.paused) {
+			playIcon.className="fas fa-pause fa-lg";
+			console.log("hemen erreproduzitzen");
+		    media.play();
+		    if(audioPlayer!=null){
+		    	audioPlayer.play();
+		    }
+		  } else {
+			playIcon.className="fas fa-play fa-lg";
+			console.log("hemen geldirik");
+		    media.pause();
+		    if(audioPlayer!=null){
+		    	audioPlayer.pause();
+		    }
+		  }
+	}else{
+		document.getElementById("notifikazioa").setAttribute('style', 'display:block;');
+	}
+	
 	}
 
 stop.addEventListener('click', stopMedia);
@@ -164,7 +170,7 @@ function stopMediaBideo() {
 	}
 
 rwd.addEventListener('click', aurrekoa);
-fwd.addEventListener('click', hurrengoa);
+fwd.addEventListener('click', hurrengoaB);
 
 let intervalFwd;
 let intervalRwd;
@@ -199,6 +205,14 @@ function hurrengoa(){
 	}
 }
 
+function hurrengoaB(){
+	audioPlayer.pause();
+	if(!perts){
+		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])+denborak[pausuak.indexOf(balioak[elm])][1];
+	}
+	hurrengoa();
+}
+
 function berria(elm){
 	
 	media.src = nextsrc[elm];
@@ -210,14 +224,17 @@ function berria(elm){
 	console.log(media.duration);
 	//fetchVideoAndPlay(nextsrc[elm]);
 	console.log("Elm:"+elm+" Src:"+media.src+" berriaN");
-	media.setAttribute('poster', "video/white.jpg");
 	
 }
 
 function denboraAldatu(){
 	if(!perts){
 		media.currentTime=denborak[pausuak.indexOf(balioak[elm])][0];
-	}	
+		media.setAttribute('poster', "video/white.jpg");
+	}
+	else{
+		media.setAttribute('poster', "video/output.jpg");
+	}
 }
 
 function berriaB(elm){	
@@ -701,9 +718,11 @@ function aldatuAudio(balioa){
 	if(balioa==4){
 		dantzaAukeratuCardErakutsi(balioa);
 		perts=false;
+		document.getElementById("mute").disabled=true;
 		media.currentTime=denborak[0][0];
 	}else{
 		perts=true;
+		document.getElementById("mute").disabled=false;
 		document.getElementById("listaNagusia").className="box";
 		document.getElementById("dantzaAldatuCard").className="ezkutatu";
 		document.getElementById("dantzaCard").className="ezkutatu";
@@ -915,11 +934,13 @@ function elmentuaAukeraGehitu (balioakSartu) {
 }
 
 function dantzaCardAldatu(){
+	media.setAttribute('poster', "video/output.jpg");
+	document.getElementById("playBotoia").disabled=true;
 	document.getElementById("listaNagusia").className="ezkutatu";
 	document.getElementById("dantzaAldatuCard").className="box";
 	document.getElementById("dantzaCard").className="ezkutatu";
 }
-
+ 
 function danCardAldatu(){
 	audioPlayer=document.getElementById("audioPlayer");
 	ixildu=0;
@@ -937,6 +958,7 @@ function danCardAldatu(){
 	 for(var v=0; v<tituluak.length;v++){
 		 tituluak[v].innerHTML=audioak[4];
 	}
+	 document.getElementById("playBotoia").disabled=false;
 }
 
 media.addEventListener("timeupdate", function(){

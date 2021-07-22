@@ -28,11 +28,11 @@
  	<div class="column is-two-thirds-desktop">
 	    <div class="player mx-2">
 	      <video playsinline="playinline" preload="metadata" poster="video/output.jpg" type='video/mp4'></video>
-	      <div class="controls">
-	        <button class="play buttonB" onclick="playPause()"><i id="playIcon" class="fas fa-play fa-lg" style="color:white"></i></button>
+	      <div id="controls" class="controls">
+	        <button id="playBotoia" class="play buttonB" onclick="playPause()"><i id="playIcon" class="fas fa-play fa-lg" style="color:white"></i></button>
 	        <button class="stop buttonB"><i class="fas fa-stop fa-lg" style="color:white"></i></button>
 	        <div class="timer"><div></div><span aria-label="timer">00:00</span></div>
-	        <button class="mute buttonB" onclick="setMute()"><i id="muteIcon" class="fas fa-volume-mute fa-lg" style="color:white"></i></button>
+	        <button id="mute" class="mute buttonB" onclick="setMute()"><i id="muteIcon" class="fas fa-volume-mute fa-lg" style="color:white"></i></button>
 	        <button class="speed buttonB"><i id="abiaduraIcon" class="far fa-clock fa-lg" style="color:white"></i></button>
 	        <button class="loop buttonB"><i id="loopIcon"class="fas fa-undo fa-lg" style="color:white"></i></button>
 	        <button class="full buttonB"onclick="fullScreen()"><i class="fas fa-expand-alt fa-lg" style="color:white"></i></button>
@@ -40,6 +40,10 @@
 	        <button class="fwd buttonB"><i class="fas fa-forward fa-lg"style="color:white"></i></button>        
 	      </div>
 	    </div>
+	    <div id="notifikazioa" class="mx-2 my-3 ezkutatu notification is-light is-danger">
+	  		<button class="delete" id="kendu"></button>
+	  		"Gogoratu ikusi nahi dituzun bideoak aukeratu behar dituzula!"
+	  </div>
 	</div>
 	
 	<div class="column is-third mx-3 my-0 py-2">
@@ -71,7 +75,7 @@
 		   		<div class="level-left">
 				  <div class="level-item select is-small" id="gehitu">
 				  		<p class="subtitle is-5 mr-2">Pausoa gehitu:</p>
-					 	<select class="naranja" id="gehituSelect">
+					 	<select  id="gehituSelect">
 					 	</select>
 					</div>
 					<div class="level-item">				 	
@@ -150,11 +154,11 @@
 		
 		<div class="card">
 		  <header class="card-header">
-		  	<nav class="level is-mobile my-3 mx-3">
+		  	<nav class="level is-mobile my-3 mx-4">
 			  	<div class="level-left">
 			  		<div class="level-item"><p class="title is-5">Audioak :</p></div>
 			  		<div class="level-item "><p id="audioTitulo">Bideoko Audioa</p></div> 		
-			  		<div class="level-item mx-2 mb-1"><i class="is-clickable gora fas fa-angle-down fa-lg" onclick="audioListaErakutsi()"></i></div>  	
+			  		<div class="level-item mx-1 "><i class="is-clickable gora fas fa-angle-down fa-lg" onclick="audioListaErakutsi()"></i></div>  	
 			  	</div>		  	
 		  	</nav>
 		  </header>
