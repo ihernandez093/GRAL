@@ -100,6 +100,7 @@ function playPause(){
 		console.log("hemen 2");
 		playPauseMedia();
 	}
+	console.trace(audioPlayer.muted);
 }
 //
 function playPauseMedia() {
@@ -197,6 +198,7 @@ function aurrekoaB(){
 		console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
 		if( kenketa<=0){
 			audioPlayer.currentTime=0;
+			elm=1;
 			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
 		}else{
 			audioPlayer.currentTime=kenketa;
@@ -248,7 +250,7 @@ function berria(elm){
 function denboraAldatu(){
 	if(!perts){
 		media.currentTime=denborak[pausuak.indexOf(balioak[elm])][0];
-		media.setAttribute('poster', "video/white.jpg");
+		media.setAttribute('poster', "video/white.jpeg");
 	}
 	else{
 		media.setAttribute('poster', "video/output.jpg");
@@ -678,6 +680,9 @@ function audioAldatu(){
 		console.log("Audioa:"+value+"   ixildu:"+ixildu);
 		stopMedia();
 	}
+	if(!perts){
+		audioPlayer.muted=false;
+	}
 }
 
 function audioLuzeraAurreraAldatu(){
@@ -786,6 +791,9 @@ function aldatuAudio(balioa){
 			stopMedia();
 		}
 	}
+	if(!perts){
+		audioPlayer.muted=false;
+	}
 }
 
 function entzun(balioa){
@@ -850,7 +858,7 @@ function audioCardBistaratu(){
 		  aldatu[v]=document.createElement("i");
 		  aldatu[v].value=v;
 		  aldatu[v].setAttribute("onclick","aldatuAudio(value)");
-		  aldatu[v].className="level-item is-clickable gora fas fa-exchange-alt fa-lg";
+		  aldatu[v].className="level-item is-clickable gora fas mx-2 fa-exchange-alt fa-lg";
 		  
 		  //entzun botoia gehitu
 		  
@@ -859,7 +867,7 @@ function audioCardBistaratu(){
 			  entzun[v].value=v; 
 			  entzun[v].setAttribute("onclick","entzun(value)");
 			  entzun[v].id=audioak[v]+"entzun";
-			  entzun[v].className="is-clickable mr-3 level-item behera fas fa-volume-up fa-lg";
+			  entzun[v].className="is-clickable mr-3 level-item behera mx-3 fas fa-volume-up fa-lg";
 			  //behera[v].innerHTML="Jeitsi";
 			  botoiDiv[v].appendChild(entzun[v]);
 		  }	  
@@ -876,7 +884,6 @@ function audioCardBistaratu(){
 
 
 function dantzaAukeratuCardErakutsi(balioa){
-	audioPlayer.pause();
 	 var audioLista = document.getElementById("dantzaAldatuCard");
 	 var tituluak=document.getElementsByClassName("dantzaTitulo");
 	 aukeratutakoAudioa=audioak[balioa];
@@ -975,7 +982,6 @@ function elmentuaAukeraGehitu (balioakSartu) {
 
 function dantzaCardAldatu(){
 	stopMedia();
-	audioPlayer.pause();
 	media.setAttribute('poster', "video/output.jpg");
 	document.getElementById("playBotoia").disabled=true;
 	document.getElementById("listaNagusia").className="ezkutatu";
@@ -1001,6 +1007,7 @@ function danCardAldatu(){
 		 tituluak[v].innerHTML=audioak[4];
 	}
 	 document.getElementById("playBotoia").disabled=false;
+	 audioPlayer.muted=false;
 }
 
 media.addEventListener("timeupdate", function(){
