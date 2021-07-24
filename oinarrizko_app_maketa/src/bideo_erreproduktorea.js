@@ -169,7 +169,7 @@ function stopMediaBideo() {
 	  hurrengoa();
 	}
 
-rwd.addEventListener('click', aurrekoa);
+rwd.addEventListener('click', aurrekoaB);
 fwd.addEventListener('click', hurrengoaB);
 
 let intervalFwd;
@@ -177,16 +177,33 @@ let intervalRwd;
 
 function aurrekoa(){
 	if(elm==0){
-		elm=nextsrc.length-1;
-		bideoMomentua=media.currentTime;
-		berria(elm);
-		audioLuzeraAtzeraAldatu();	
+		elm=nextsrc.length-1;			
 	}else{
-		--elm;
-		bideoMomentua=media.currentTime;
-		berria(elm);
-		audioLuzeraAtzeraAldatu();		
-	}	
+		--elm;		
+	}
+	berria(elm);
+}
+
+function aurrekoaB(){
+	console.trace({elm});
+	audioPlayer.pause();
+	if(!perts){
+		if(elm==0){
+			var elemAurekoa = nextsrc.length-1;
+		}else{
+			var elemAurekoa=elm-1;
+		}			
+		var kenketa=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])-(denborak[pausuak.indexOf(balioak[elemAurekoa])][1]-denborak[pausuak.indexOf(balioak[elemAurekoa])][0]);
+		console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
+		if( kenketa<=0){
+			audioPlayer.currentTime=0;
+			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
+		}else{
+			audioPlayer.currentTime=kenketa;
+			console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
+		}	
+	}
+	aurrekoa();
 }
 
 function hurrengoa(){
@@ -206,9 +223,10 @@ function hurrengoa(){
 }
 
 function hurrengoaB(){
+	console.trace({elm});
 	audioPlayer.pause();
 	if(!perts){
-		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])+denborak[pausuak.indexOf(balioak[elm])][1];
+		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])+(denborak[pausuak.indexOf(balioak[elm])][1]-denborak[pausuak.indexOf(balioak[elm])][0]);
 	}
 	hurrengoa();
 }
@@ -681,7 +699,7 @@ function audioLuzeraAurreraAldatu(){
 
 function audioLuzeraAtzeraAldatu(){
 	var value =aukeratutakoAudioa;
-	if(value!=""){
+	if(value!="" && value!="OSOA"){
 		media.onloadedmetadata=function(){
 			console.log(media.duration);
 			var kenketa=audioPlayer.currentTime - media.duration - bideoMomentua;
@@ -696,6 +714,25 @@ function audioLuzeraAtzeraAldatu(){
 				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
 			}
 		}
+	}else if(value=="OSOA"){
+		media.onloadedmetadata=function(){
+			if(elm==(balioak.length-1)){
+				var elemAurekoa = 0;
+			}else{
+				var elemAurekoa=elm+1;
+			}			
+			var kenketa=audioPlayer.currentTime-(bideoMomentua-denborak[pausuak.indexOf(balioak[elemAurekoa])][0])-(denborak[pausuak.indexOf(balioak[elm])][1]-denborak[pausuak.indexOf(balioak[elm])][0]);
+			console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
+			if( kenketa<=0){
+				audioPlayer.currentTime=0;
+				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);
+			}else{
+				audioPlayer.currentTime=kenketa;
+				console.log('audioPlayer.currentTime'+audioPlayer.currentTime);		
+			}
+		}
+			//audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])+(denborak[pausuak.indexOf(balioak[elm])][1]-denborak[pausuak.indexOf(balioak[elm])][0]);
+			
 	}
 }
 
@@ -745,7 +782,9 @@ function aldatuAudio(balioa){
 		audioPlayer.load();
 		console.log("Audioa:"+audioak[balioa]+"   ixildu:"+ixildu);
 		document.getElementById("audioTitulo").innerHTML=audioak[balioa];
-		stopMedia();
+		if(balioa!=4){
+			stopMedia();
+		}
 	}
 }
 
@@ -837,6 +876,7 @@ function audioCardBistaratu(){
 
 
 function dantzaAukeratuCardErakutsi(balioa){
+	audioPlayer.pause();
 	 var audioLista = document.getElementById("dantzaAldatuCard");
 	 var tituluak=document.getElementsByClassName("dantzaTitulo");
 	 aukeratutakoAudioa=audioak[balioa];
@@ -851,7 +891,7 @@ function dantzaAukeratuCardErakutsi(balioa){
 	 divEzabatu();
 	 nextsrc = [];
 	 media.src=null;
-	 stopMedia();
+	 
 }
 
 function dantzaAldatuSelect(){
@@ -934,6 +974,8 @@ function elmentuaAukeraGehitu (balioakSartu) {
 }
 
 function dantzaCardAldatu(){
+	stopMedia();
+	audioPlayer.pause();
 	media.setAttribute('poster', "video/output.jpg");
 	document.getElementById("playBotoia").disabled=true;
 	document.getElementById("listaNagusia").className="ezkutatu";
