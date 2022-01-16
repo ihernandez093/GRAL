@@ -3,12 +3,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" name="description" content="JavaScript Client Herald">
-  <title>Aiko Dantza Eskola</title>
+  <title>Dantza Eskola</title>
   <link rel="stylesheet" type="text/css" href="./estiloa.css"/>
   <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.2-web/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel="icon" type="image/png" href="./icon.png">
   <script src="aukerak.js"></script>
+  <script type="text/javascript" src="data.json"></script>
 </head>
 
 <body>
@@ -80,7 +81,7 @@
 		<h2 class="subtitle is-4 is-spaced" id="aukerarurakoDesk">Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!</h2>
 		<div class=" mt-2 columns is-desktop is-multiline is-centered">
 		  <div class="column mx-5">
-		  		<article class="panel is-info">
+		  	<article class="panel">
 		  		<div class="panel-heading naranja">
 					<nav class="level is-mobile">
 					  <!-- Left side -->
@@ -95,23 +96,17 @@
 						    <input type="checkbox" onclick="ugariAukeratu(value)" id="A" value="A">
 						  </div>
 					</nav>
-	  			</div>	
-	  			
-	  			<label class="panel-block px-4 py-4">
-					<input type="checkbox" class="A" onclick="egiaztatu(value)" id="A_01" value="A_01_Aurretik">
-					<p>A_01_Aurretik</p>
-					<p class="pl-3" id="A_01_Aurretik"></p>
-	  			</label>  
-	  			<label class="panel-block px-4 py-4">
-					<input type="checkbox" class="A" onclick="egiaztatu(value)" id="A_09" value="A_09_Aurretik">
-				  	<p>A_09_Aurretik</p>
-				  	<p class="pl-3" id="A_09_Aurretik"></p>
-	  			</label>  
+	  			</div>
+	  			<p class="panel-tabs">
+					    <a id="AJ_tab" onclick="tab_erakutsi(id)" class="is-active">Jota</a>
+					    <a id="AP_tab" onclick="tab_erakutsi(id)" class="naranja-kolorea">Porrue</a>
+					</p>
+					<div id="A_blokea" class="dropdown-content"></div>		 
 		  </article>
 		  </div>
 		  <div class="column mx-5">
-		  <article class="panel ">
-		  		<div class="panel-heading naranja">
+		  <article class="panel">
+		  		<div  class="panel-heading naranja">
 					<nav class="level is-mobile">
 					  		<!-- Left side -->
 						  <div class="level-left">
@@ -125,22 +120,16 @@
 						    <input class="level-item" type="checkbox" onclick="ugariAukeratu(value)" id="B" value="B">
 						  </div>
 					</nav>
-	  			</div>	
-	  			
-				<label class="panel-block px-4 py-4">	
-					<input type="checkbox" class="B" onclick="egiaztatu(value)" id="B_01" value="B_01_Aurretik">		
-				  	<p>B_01_Aurretik</p>			  		
-				  	<p class="pl-3" id="B_01_Aurretik"></p>
-	  			</label> 			
-	  			<label class="panel-block px-4 py-4">	
-	  				<input type="checkbox" class="B" onclick="egiaztatu(value)" id="B_07" value="B_07_2_Aurretik">			
-				  	<p>B_07_2_Aurretik</p>	  					  		
-				  	<p class="pl-3"id="B_07_2_Aurretik"></p>
-	  			</label>  
+	  			</div>
+	  			<p class="panel-tabs">
+					    <a id="BJ_tab" onclick="tab_erakutsi(id)" class="is-active">Jota</a>
+					    <a id="BP_tab" onclick="tab_erakutsi(id)" class="naranja-kolorea">Porrue</a>
+					</p>	
+				<div id="B_blokea" class="dropdown-content"></div>		  			 
 		  </article>
 		  </div>
 		  <div class="column mx-5">
-			  	<article class="panel is-info">
+			  	<article class="panel">
 			  		<div class="panel-heading naranja">
 						<nav class="level is-mobile">
 						  <!-- Left side -->
@@ -155,27 +144,24 @@
 							    <input type="checkbox" onclick="ugariAukeratu(value)" id="C" value="C">
 							  </div>
 						</nav>
-		  			</div>	
-		  			
-		  			<label class="panel-block px-4 py-4">
-						<input type="checkbox" class="C" onclick="egiaztatu(value)" id="C_01" value="C_01_A_Aurretik">
-						<p>C_01_A_Aurretik</p>	
-						<p  class="pl-3" id="C_01_A_Aurretik"></p>
-		  			</label>  
-		  			<label class="panel-block px-4 py-4">
-						<input type="checkbox" class="C" onclick="egiaztatu(value)" id="C_Bi" value="C_Bikotean_04">
-					  	<p class="">C_Bikotean_04</p>			  		
-					  	<p class="pl-3" id="C_Bikotean_04"></p>
-		  			</label>  
+		  			</div>
+		  			<p class="panel-tabs">
+					    <a id="CJ_tab" onclick="tab_erakutsi(id)" class="is-active is-4">Jota</a>
+					    <a id="CP_tab" onclick="tab_erakutsi(id)" class="naranja-kolorea">Porrue</a>
+					</p>
+					<div id="C_blokea" class="dropdown-content"></div>	
+					
 			  </article>
 		  
 		  </div>
 			  
 		</div>
 	    
-	  
-		<div class="columns is-centered is-mobile py-5 is-narrow">
-				<button  class="button naranja is-large mt-6" onclick="queryh()" value="BideoaBistaratu">Dantzan hasi! </button>
+	  	<div class="columns is-centered is-mobile py-2 is-narrow">
+				<p id="bideo_lista" class="subtitle is-5 mt-4"></p>
+	  	</div>
+		<div class="columns is-centered is-mobile py-2 is-narrow">
+				<button  class="button naranja is-large mt-1" onclick="queryh()" value="BideoaBistaratu">Dantzan hasi! </button>
 		  <p id="alerta">
 		</div>
 		<div id="notifikazioa" class="ezkutatu notification is-danger">

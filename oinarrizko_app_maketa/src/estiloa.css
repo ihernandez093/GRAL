@@ -57,11 +57,43 @@ table, th, td{
 	color:#fff !important;
 }
 
+.dropdown-content {
+  max-height: 15em;
+  overflow: auto;
+}
+
 .naranja-kolorea{
 	color:#EB6F25 !important;
+}
+.naranja-ongietorri{
+	background-color: #FFEEE3 !important;
+	color:#fff !important;
 }
 
 .naranja-bordea{
 	border-bottom-color:#EB6F25 !important;
 	color: #EB6F25 !important;
+}
+
+.hero.has-background{
+	position: relative;
+    overflow: hidden;
+}
+
+ .hero-background {
+  position: absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+  z-index: 0;
+}
+
+.hero-background.is-transparent{
+	opacity: 0.1;
+	-webkit-filter: blur(3px);
+}
+
+.ongietorri-body{
+	z-index:1;
 }

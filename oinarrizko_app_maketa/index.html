@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" name="description" content="JavaScript Client Herald">
-  <title>Aiko Dantza Eskola</title>
+  <title>Dantza Eskola</title>
   <link rel="stylesheet" type="text/css" href="src/estiloa.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel="stylesheet" type="text/css" href="src/fontawesome-free-5.15.2-web/css/all.css">
@@ -11,22 +11,28 @@
 </head>
 
 <body>
-<section class="section is-medium is-tablet ">
-	<h1 class="title is-1 is-spaced"><img src="/src/icon.png" alt="" style="height: 300px;"></h1>
-	<h1 class="title is-1 is-spaced">Dantza Eskola Digitala</h1>
-	<table class="tableIkustezina">
-		<tr id="thIkusitezina">
-			<td id="tdIkustezina">
-				<form action="./src/aukerak.html">
-					<input class="button naranja is-large" type="submit" value="Dantzan hasi!">
-				</form>
-			</td>
-					
-		</tr>
-	</table>
-</section>
+<div class="hero fullheight naranja-ongietorri is-tablet has-background">
+		<video class="hero-background is-transparent" autoplay loop poster="http://media.w3.org/2010/05/sintel/poster.png" muted="muted">
+	       <source id="mp4" src="src/video/ongietorri.mp4" type="video/mp4">
+	       Your browser does not support the video tag. I suggest you upgrade your browser.
+	   </video>
+	<div class="hero-body ongietorri-body">
+		<h1 class="title is-1 is-spaced"><img src="/src/icon.png" alt="" style="height: 300px;"></h1>
+		<h1 class="title is-1 is-spaced">Dantza Eskola Digitala</h1>
+		<table class="tableIkustezina">
+			<tr id="thIkusitezina">
+				<td id="tdIkustezina">
+					<form action="./src/aukerak.html">
+						<input class="button naranja is-large" style="border: none;" type="submit" value="Dantzan hasi!">
+					</form>
+				</td>
+						
+			</tr>
+		</table>	
+	</div>	
+</div>
 
-<section class="hero naranja is-small">
+<section class="hero naranja py-4 is-small">
   	<div class="hero-body">
 		<div class="columns is-vcentered">
 			<div class="ml-2 column is-one-quarter">
@@ -40,20 +46,20 @@
 				<div class="tile mx-4 my-2 is-ancestor">
 			  <div class="tile is-parent">
 			    <div class="tile is-child box">
-			      <p class="title"><i class="far fa-edit mx-2"> </i>Pertsonalizatua</p>
+			      <p class="title"><i class="far fa-edit mr-4"> </i>Pertsonalizatua</p>
 			      <div class="content is-medium">			      
 						<ul>
-					      <li class="my-4">Eskuragarri dauden pausuak erabiliz nahi duzun dantza sortu dezakezu</li>
-					      <li class="my-4">Uneoro pausuen ordena aldatu dezakez, dantza paregabe bat eraikitzeko</li>
+					      <li class="my-4">Eskuragarri dauden pausuak erabiliz nahi duzun dantza sortu</li>
+					      <li class="my-4">Uneoro pausuen ordena aldatu dezakezu, dantza paregabe bat eraikitzeko</li>
 					      <li class="my-4">Pausuak gehitu edo kendu, inolako zailtasunik gabe</li>
-					      <li class="my-4">Audioa aldatu, pausuak musika batekin ikasteko</li>
+					      <li class="my-4">Audioa aldatu, pausuak bestelako musikarekin ikasteko</li>
 					    </ul> 
 				    </div> 
 			      </div>
 			  </div>
 			  <div class="tile mx-2 is-parent">
 			    <div class="tile is-child box">
-			      <p class="title"><i class="fas fa-film mx-2"></i>Jota/Porrue edo Arin-Arina</p>
+			      <p class="title"><i class="fas fa-film mr-4"></i>Jota/Porrue edo Arin-Arina</p>
 			      <div class="content is-medium">			      
 					<ul>
 				      <li class="my-4">Bizkaiko jotak eta porruak dantzatzen ikasi zure erara</li>
@@ -69,18 +75,19 @@
 	</div>
 </section>
 <section class="section is-medium">
+  <p class="title is-3 naranja-kolorea">Interfazea</p>
   <div class="tile is-ancestor">
   <div class="tile is-vertical is-parent">
     <div class="tile is-child box">
-      <p class="subtitle naranja-kolorea">Pausuak aukeratu</p>
+      <p class="subtitle is-4 my-1 naranja-kolorea">Pausuak aukeratu</p>
       <figure class="image">
-            <img src="src/2.jpg" height= "80" width="235""/>
+            <img src="src/2.png" height= "80" width="235""/>
           </figure>
     </div>
   </div>
   <div class="tile is-parent">
     <div class="tile is-child box">
-      <p class="subtitle naranja-kolorea">Dantza erreproduktorea</p>
+      <p class="subtitle is-4 my-1 + naranja-kolorea">Dantza erreproduktorea</p>
       <figure class="image">
             <img src="src/1.jpg" height= "80" width="235"/>
           </figure>
@@ -88,67 +95,67 @@
   </div>
 </div>
 </section>
-<section class="hero naranja is-small">
-  	<div class="hero-body my-2">
+<section class="hero naranja py-6 is-small">
+  	<div class="hero-body">
 		<div class="columns is-vcentered">
 			<div class="column my-2 is-three-quarters"> 
 				<div class="tile mx-2 is-ancestor">
 					  <div class="tile is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Pausuak aukeratu</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-hand-pointer mr-4"> </i>Pausuak aukeratu</p>
+					      <p class="subtitle mt-1">Edozein uneetan bistaratzen ari den pausua aldatu</p>
 					    </article>
 					  </div>
 					  <div class="tile  mx-2 is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Ordena aldatu</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-sort mr-4"> </i>Ordena aldatu</p>
+					      <p class="subtitle mt-1">Sortutako listaren ordena aldatu, zure gustoko erara</p>
 					    </article>
 					  </div>
 					  <div class="tile mx-2 is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Pausua gehitu/kendu</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-exchange-alt mr-4"> </i>Pausua gehitu/kendu</p>
+					      <p class="subtitle mt-1">Eskuragarri dauden pausu guztitatik listara pausuak gehitu edo kendu</p>
 					    </article>
 					  </div>
 					</div>
 					<div class="tile mx-2 is-ancestor">
 					  <div class="tile is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Audioa aldatu</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-volume-up mr-4"> </i>Audioa aldatu</p>
+					      <p class="subtitle mt-1">Bideoarekin batera erreproduzitzen ari den audioa aldatu</p>
 					    </article>
 					  </div>
 					  <div class="tile  mx-2 is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Countdown</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-stopwatch-20 mr-4"> </i>Countdown</p>
+					      <p class="subtitle mt-1">Bideoa erreproduzitzen hasi baina lehenago kontagailu bat aktibatu</p>
 					    </article>
 					  </div>
 					  <div class="tile mx-2 is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Abiadura aldatu</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-tachometer-alt mr-4"> </i>Abiadura aldatu</p>
+					      <p class="subtitle mt-1">Erreproduzitzen ari den bideoaren abiadura moteldu edo bizkortu</p>
 					    </article>
 					  </div>
 					</div>
 					<div class="tile mx-2 is-ancestor">
 					  <div class="tile is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Audio erreproduktorea</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-headphones-alt mr-4"> </i>Audio erreproduktorea</p>
+					      <p class="subtitle mt-1">Audioak entzun, bideorik ikusi behar gabe</p>
 					    </article>
 					  </div>
 					  <div class="tile  mx-2 is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Hurrengo/Aurreko pausua</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-forward mr-4"> </i>Hurrengo / Aurreko pausua</p>
+					      <p class="subtitle mt-1">Pausuen artean mugitu botoi hauen bitartez</p>
 					    </article>
 					  </div>
 					  <div class="tile mx-2 is-parent">
 					    <article class="tile is-child box">
-					      <p class="title">Loop</p>
-					      <p class="subtitle">Subtitle</p>
+					      <p class="title is-4"><i class="fas fa-redo mr-4"> </i>Loop</p>
+					      <p class="subtitle mt-1">Pausuak loop-eatu, aukeratutako pausuak hobeago dantzatzen ikasteko</p>
 					    </article>
 					  </div>
 					</div>
@@ -164,34 +171,102 @@
 	</div>
 </section>
 <section class="section is-medium">
+	<p class="title is-3 naranja-kolorea">Proiektuaren partaideak</p>
   <div class="tile is-ancestor">
   <div class="tile is-vertical is-parent">
     <div class="tile is-child box" style="display:inline-block;vertical-align:middle;">
-    	<div style="display:inline-block;vertical-align:middle;">
-	    	<a href="https://www.ehu.eus/es/"><img src="src/logo.png" height= "235" width="235""/></a>
-		</div>
-      <p class="title">Aiko</p>
-      <p class="subtitle">Dantza taldea</p>
+      <nav class="level mt-3 pt-3">
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <a href="https://www.aikotaldea.eus/index.php?idioma=eu"><img src="src/logo.png" width="160"/></a>
+		    </div>
+		  </div>
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <p href="https://www.aikotaldea.eus/index.php?idioma=eu" class="title">Aiko</p>
+		    </div>
+		  </div>
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <p href="https://www.aikotaldea.eus/index.php?idioma=eu" class="subtitle">Dantza taldea</p>
+		    </div>
+		  </div>
+		</nav>
+		<div class="content mt-2 is-medium">			      
+			<ul>
+			  <li class="my-2 mt-1 subtitle is-6">AIKO dantza eskola, euskal musika eta dantza espezializatu eta eskarmentu handiko irakaslez osatutako dantza taldea da.</li>
+			 <p></p>
+		      <li class="my-2 mt-1 subtitle is-6">Aplikazioan zehar erabiltzen diren pausuen bideoen egileak</li>
+		      <li class="my-2 mt-1 subtitle is-6">Aplikazioak eskaintzen dituen  dantzen pausuen egiturak zeintzuk diren eta pausuen arteko sinkronismoa betetzeko baldintzak zeintzuk diren definitu dituzte</li>
+		    </ul> 
+		</div>   
     </div>
   </div>
   <div class="tile is-parent">
-    <div class="tile is-child box" style="display:inline-block;vertical-align:middle;">
-    	<div style="display:inline-block;vertical-align:middle;">
-	    	<a href="https://www.ehu.eus/es/"><img src="src/ehu.jpg" height= "235" width="235""/></a>
-		</div>
-      <p class="title">UPV/EHU</p>
-      <p class="subtitle">Unibertsitatea</p>
+    <div class="tile is-child box" style="display:inline-block;vertical-align:middle;">      
+      <nav class="level pt-1">
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <a href="https://www.ehu.eus/es/"><img src="src/ehu.jpg" width= "160"/></a>
+		    </div>
+		  </div>
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <p href="https://www.ehu.eus/es/" class="title">UPV/EHU</p>
+		    </div>
+		  </div>
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <p href="https://www.ehu.eus/es/" class="subtitle">Unibertsitatea</p>
+		    </div>
+		  </div>
+		</nav>
+		<div class="content mt-2 is-medium">			      
+			<ul>
+			  <li class="my-2 mt-1 subtitle is-6">Euskal Herriko Unibertsitatea (UPV/EHU), Euskal Autonomia Erkidegoko unibertsitate publikoa</li>
+		      <p></p>
+		      <li class="my-2 mt-1 subtitle is-6">Proiektu hau Telekomunikazio Teknologiaren Ingeniaritzako Graduaren gradu amaierako lana da</li>
+		      <li class="my-2 mt-1 subtitle is-6">Graduan zehar barneratutako kontzeptuak inplementatu dira: ingurune banatuetako plataforma baten sorrera, zerbitzatzea eta mantenua</li>
+		    </ul> 
+		</div> 
     </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box" style="display:inline-block;vertical-align:middle;">      
+      <nav class="level mt-3 pt-3">
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <a href="https://i2t.ehu.eus/en"><img src="src/logo_i2t.svg" width= "160"/></a>
+		    </div>
+		  </div>
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <p href="https://i2t.ehu.eus/en" class="title">I2T</p>
+		    </div>
+		  </div>
+		  <div class="level-item has-text-centered">
+		    <div>
+		      <p href="https://i2t.ehu.eus/en" class="subtitle">Ikerketa taldea</p>
+		    </div>
+		  </div>
+		</nav>
+		<div class="content mt-2 is-medium">			      
+			<ul>
+		      <li class="my-2 mt-1 subtitle is-6">I2T Euskal Herriko Unibertsitateko (UPV/EHU) ikerketa telematikoko talde bat da. Taldea Bilbon kokatuta dago, eta honako arlo hauen ikerketan zentratzen da: telekomunikazio sistema aurreratuak, garraio sistema adimendunak eta banaketak eta segurtasunaz ohartzeko aplikazioak.</li>
+		      <p></p>
+		      <li class="my-2 mt-1 subtitle is-6">Proiketua I2T ikerketa taldeak duen web zerbitzariaren bidez zerbitzatu da</li>
+		    </ul> 
+		</div>
+	</div>
   </div>
 </div>
 </section>
 <footer class="footer">
 <div style="text-align: center;">
-	<div style="display:inline-block;vertical-align:middle;">
-	    <a href="https://www.ehu.eus/es/"><img src="src/ehu.jpg" height= "235" width="235""/></a>
-	</div>
 	<div style="display:inline-block;">
-		<h2 >-    Iker Hernandez Jauregi</h2>
+		<h2 class="subtitle is-6" >Proiektuaren garatzailea 	-    <a class="naranja-kolorea" href="https://www.linkedin.com/in/iker-hern%C3%A1ndez-a7a81848">Iker Hernandez Jauregi</a></h2>
+		<h2 class="subtitle is-6">Proiektuaren zuzendariak 	-    <a class="naranja-kolorea" href="https://i2t.ehu.eus/en/member/10005/goirizelaia-i%C3%B1aki">Iñaki Goirizelaia</a>, <a class="naranja-kolorea" href="https://i2t.ehu.eus/en/member/10003/huarte-maider">Maider Huarte</a></h2>
+
 	</div>
 </div>
 </footer>

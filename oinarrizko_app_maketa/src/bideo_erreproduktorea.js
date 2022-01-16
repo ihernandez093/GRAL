@@ -4,9 +4,10 @@ const kop=0;
 
 let balioak=[];
 
-var pausuak=[ "A_01_Aurretik", "A_09_Aurretik", "B_01_Aurretik", "B_07_2_Aurretik", "C_01_A_Aurretik", "C_Bikotean_04" ];
+var pausuak=["AJ_01", "AJ_02", "AJ_03", "AJ_04", "AJ_05", "AJ_06", "AJ_07", "AJ_08", "AJ_09", "AJ_10", "AJ_11", "AJ_12", "AJ_13", "AJ_14", "AJ_15", "AJ_16", "AJ_17", "AJ_18", "AJ_19", "AJ_20", "AJ_21", "AJ_22", "AJ_23", "AJ_24", "AJ_25", "AJ_26", "AJ_27", "AJ_28", "AJ_29", "AJ_30", "AJ_31", "AJ_32", "AJ_33", "AP_01", "AP_02", "AP_03", "AP_04", "AP_05", "AP_06", "AP_07", "AP_08", "AP_09", "AP_10", "AP_11", "AP_12", "AP_13", "AP_14", "AP_15", "AP_16", "AP_17", "AP_18", "AP_19", "AP_20", "AP_21", "AP_22", "BJ_01", "BJ_02", "BJ_03", "BJ_04", "BJ_05", "BJ_06", "BJ_07", "BJ_08", "BJ_09", "BJ_10", "BJ_11", "BJ_12", "BJ_13", "BJ_14", "BJ_15", "BJ_16", "BJ_18", "BJ_19", "BP_01", "BP_02", "BP_03", "BP_04", "BP_05", "BP_06", "BP_07", "BP_08", "BP_09", "BP_10", "BP_11", "BP_12", "BP_13", "BP_14", "BP_15", "BP_16", "CJ_01", "CJ_02", "CJ_03", "CJ_04", "CJ_05", "CJ_06", "CJ_07", "CJ_08", "CJ_09", "CJ_10", "CJ_11", "CJ_12", "CJ_13", "CJ_14", "CJ_15", "CJ_16", "CJ_17", "CJ_18", "CJ_19", "CJ_20", "CJ_21", "CJ_22", "CJ_23", "CJ_24", "CJ_25", "CJ_Bikotean_01", "CJ_Bikotean_02", "CJ_Bikotean_03", "CJ_Bikotean_04", "CJ_Bikotean_05", "CP_01", "CP_02", "CP_03", "CP_04", "CP_05", "CP_06", "CP_07", "CP_08", "CP_09", "CP_10", "CP_11", "CP_Bikotean_01", "CP_Bikotean_02", "CP_Bikotean_03"];
 var audioak=["","A","B","C","OSOA"];
-var denborak=[[1.33 , 17.20],[1.33 , 17.20],[1.33 , 17.60],[1.33 , 17.60],[1.99, 28.56],[1.99 , 28.56]];
+var hasierak=["A","B","C"];
+var denborak=[[1.33 , 17.20],[1.33 , 17.60],[1.99 , 28.56]];
 var gehitu=[];
 var perts=true;
 
@@ -194,7 +195,7 @@ function aurrekoaB(){
 		}else{
 			var elemAurekoa=elm-1;
 		}			
-		var kenketa=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])-(denborak[pausuak.indexOf(balioak[elemAurekoa])][1]-denborak[pausuak.indexOf(balioak[elemAurekoa])][0]);
+		var kenketa=audioPlayer.currentTime-(media.currentTime-denborak[hasierak.indexOf(balioak[elm][0])][0])-(denborak[hasierak.indexOf(balioak[elemAurekoa][0])][1]-denborak[hasierak.indexOf(balioak[elemAurekoa][0])][0]);
 		console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
 		if( kenketa<=0){
 			audioPlayer.currentTime=0;
@@ -228,7 +229,7 @@ function hurrengoaB(){
 	console.trace({elm});
 	audioPlayer.pause();
 	if(!perts){
-		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[pausuak.indexOf(balioak[elm])][0])+(denborak[pausuak.indexOf(balioak[elm])][1]-denborak[pausuak.indexOf(balioak[elm])][0]);
+		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[hasierak.indexOf(balioak[elm][0])][0])+(denborak[hasierak.indexOf(balioak[elm][0])][1]-denborak[hasirak.indexOf(balioak[elm][0])][0]);
 	}
 	hurrengoa();
 }
@@ -249,7 +250,7 @@ function berria(elm){
 
 function denboraAldatu(){
 	if(!perts){
-		media.currentTime=denborak[pausuak.indexOf(balioak[elm])][0];
+		media.currentTime=denborak[hasierak.indexOf(balioak[elm][0])][0];
 		media.setAttribute('poster', "video/white.jpeg");
 	}
 	else{
@@ -726,7 +727,7 @@ function audioLuzeraAtzeraAldatu(){
 			}else{
 				var elemAurekoa=elm+1;
 			}			
-			var kenketa=audioPlayer.currentTime-(bideoMomentua-denborak[pausuak.indexOf(balioak[elemAurekoa])][0])-(denborak[pausuak.indexOf(balioak[elm])][1]-denborak[pausuak.indexOf(balioak[elm])][0]);
+			var kenketa=audioPlayer.currentTime-(bideoMomentua-denborak[hasierak.indexOf(balioak[elemAurekoa][0])][0])-(denborak[hasierak.indexOf(balioak[elm][0])][1]-denborak[hasierak.indexOf(balioak[elm][0])][0]);
 			console.log("ATZERA AudioLuzeera:"+audioLuzeera+" VideoLuzeera:"+ media.duration +" kenketa:"+kenketa+" bideoMomentua:"+bideoMomentua);
 			if( kenketa<=0){
 				audioPlayer.currentTime=0;
@@ -1014,7 +1015,7 @@ media.addEventListener("timeupdate", function(){
     // check whether we have passed 5 minutes,
     // current time is given in seconds
 	if(!perts){
-		if(this.currentTime >= denborak[pausuak.indexOf(balioak[elm])][1] ) {
+		if(this.currentTime >= denborak[hasierak.indexOf(balioak[elm][0])][1] ) {
 			audioPlayer.pause();
 	        hurrengoa();
 	    }
