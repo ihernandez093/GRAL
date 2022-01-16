@@ -1,0 +1,10 @@
+sudo rm -r gral
+sudo rm -r graloriginala
+echo "Gral karpeta ezabatuta"
+echo "Karpeta berria sortzen"
+sudo cp -r ~/TTA_DEVELOPED/eclipse-workspace/GRAL/oinarrizko_app_maketa/ gral/
+sudo cp -r ~/TTA_DEVELOPED/eclipse-workspace/oinarrizko_app_maketa_ORIGINALA/ graloriginala/
+echo "Karpeta berria kopiatuta"
+echo "Apache berpizten"
+sudo systemctl restart apache2
+echo "Web zerbitzaria berpiztuta"
