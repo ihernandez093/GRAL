@@ -19,6 +19,7 @@ for(var value of urlParams.values()) {
 		perts=true;
 	}else if(value=="false"){		
 		perts=false;
+		document.getElementById("mute").disabled=true;
 	}else{
 		console.log(value);
 		balioak.push(value);
@@ -98,7 +99,6 @@ function playPause(){
 		}, 1000);
 	}
 	else{
-		console.log("hemen 2");
 		playPauseMedia();
 	}
 	console.trace(audioPlayer.muted);
@@ -113,14 +113,12 @@ function playPauseMedia() {
 		clearInterval(intervalFwd);
 		  if(media.paused) {
 			playIcon.className="fas fa-pause fa-lg";
-			console.log("hemen erreproduzitzen");
 		    media.play();
 		    if(audioPlayer!=null){
 		    	audioPlayer.play();
 		    }
 		  } else {
 			playIcon.className="fas fa-play fa-lg";
-			console.log("hemen geldirik");
 		    media.pause();
 		    if(audioPlayer!=null){
 		    	audioPlayer.pause();
@@ -212,24 +210,17 @@ function aurrekoaB(){
 function hurrengoa(){
 	if(elm==nextsrc.length-1){
 		elm=0;
-		if(audioPlayer!=null){
-		//audioLuzeraAurreraAldatu();
-		}
 		berria(elm);	
 	}else{
 		++elm;
-		if(audioPlayer!=null){
-			//audioLuzeraAurreraAldatu();
-			}
 		berria(elm);	
 	}
 }
 
 function hurrengoaB(){
-	console.trace({elm});
 	audioPlayer.pause();
 	if(!perts){
-		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[hasierak.indexOf(balioak[elm][0])][0])+(denborak[hasierak.indexOf(balioak[elm][0])][1]-denborak[hasirak.indexOf(balioak[elm][0])][0]);
+		audioPlayer.currentTime=audioPlayer.currentTime-(media.currentTime-denborak[hasierak.indexOf(balioak[elm][0])][0])+(denborak[hasierak.indexOf(balioak[elm][0])][1]-denborak[hasierak.indexOf(balioak[elm][0])][0]);
 	}
 	hurrengoa();
 }
@@ -237,7 +228,8 @@ function hurrengoaB(){
 function berria(elm){
 	
 	media.src = nextsrc[elm];
-	denboraAldatu();
+	media.load();
+	denboraAldatu();	
 	media.play();
 	audioPlayer.play();
 	playIcon.className="fas fa-pause fa-lg";
@@ -623,7 +615,6 @@ function gehituArraySortu(){
 	gehitu=[];
 	//gehitu=pausuak.filter(x => balioak.indexOf(x) === -1)
 	gehitu=pausuak;
-	console.log("GehituSortu:"+gehitu);
 }
 
 function gehituPausua(){
@@ -1012,12 +1003,13 @@ function danCardAldatu(){
 }
 
 media.addEventListener("timeupdate", function(){
+	audioPlayer=document.getElementById("audioPlayer");
     // check whether we have passed 5 minutes,
     // current time is given in seconds
 	if(!perts){
-		if(this.currentTime >= denborak[hasierak.indexOf(balioak[elm][0])][1] ) {
+		if(this.currentTime >= (denborak[hasierak.indexOf(balioak[elm][0])][1]) ) {
 			audioPlayer.pause();
-	        hurrengoa();
+	        hurrengoaB();
 	    }
 	}    
 });

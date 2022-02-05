@@ -164,7 +164,7 @@ function divBideo(){
 	var bideo=document.getElementById('bideoAukeratu');
 	var audio=document.getElementById('audioAukeratu');
 	var bideoLi=document.getElementById('bideoLi');
-	var audiioLi=document.getElementById('audioLi');
+	var audioLi=document.getElementById('audioLi');
 	
 	bideo.className="bistaratu";
 	audio.className="ezkutatu";	
@@ -178,7 +178,7 @@ function divAudio(){
 	var bideo=document.getElementById('bideoAukeratu');
 	var audio=document.getElementById('audioAukeratu');
 	var bideoLi=document.getElementById('bideoLi');
-	var audiioLi=document.getElementById('audioLi');
+	var audioLi=document.getElementById('audioLi');
 	
 	audio.className="bistaratu";
 	bideo.className="ezkutatu";	
@@ -200,6 +200,7 @@ function audioAldatu(){
 function checkAll(checktoggle){
   var checkboxes = new Array(); 
   checkboxes = document.getElementsByTagName('input');
+  console.trace(checkboxes);
  
   for (var i=0; i<checkboxes.length; i++)  {
     if (checkboxes[i].type == 'checkbox')   {
@@ -229,8 +230,8 @@ function pertsonalizatuaDiv(){
 	document.getElementById("pertsonalizatuaA").classList="title is-active";
 	document.getElementById("jotaA").classList="naranja-kolorea";
 	document.getElementById("aukerarurakoDesk").innerHTML="Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!";
-	checkAll(false);
 	aukerakHasieratu();
+	checkAll(false);
 	notiEzkutatu();
 }
 
@@ -241,9 +242,9 @@ function jotaDiv(){
 	document.getElementById("pertsonalizatuaA").classList="naranja-kolorea";
 	document.getElementById("jotaA").classList="title is-active";
 	document.getElementById("aukerarurakoDesk").innerHTML="Pausu talde bakoitzetik (A-B-C) aukera bat aukeratu eta dantzan hasi!";
-	checkAll(false);
 	aukerakHasieratu();
 	notiEzkutatu();
+	checkAll(false);
 }
 
 
@@ -284,15 +285,15 @@ function erakutsi(aukeratutakoak){
 
 function checkeatu(){
 	console.log(perts+aBalio);
-	if(perts){
-		for(v=0;v<aBalio.length;v++){
-			if((aBalio[v].substring(0,2)=="A"+a_aukera)||(aBalio[v].substring(0,2)=="B"+b_aukera)||(aBalio[v].substring(0,2)=="C"+c_aukera)){			
-				var elementua= document.getElementById(aBalio[v]);
-				elementua.checked=true;
-				console.log(aBalio[v]);
-			}
+
+	for(v=0;v<aBalio.length;v++){
+		if((aBalio[v].substring(0,2)=="A"+a_aukera)||(aBalio[v].substring(0,2)=="B"+b_aukera)||(aBalio[v].substring(0,2)=="C"+c_aukera)){			
+			var elementua= document.getElementById(aBalio[v]);
+			elementua.checked=true;
+			console.log(aBalio[v]);
 		}
 	}
+	console.trace();
 }
 
 function reset_tab(){
