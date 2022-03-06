@@ -227,8 +227,8 @@ function pertsonalizatuaDiv(){
 	perts=true;
 	document.getElementById("pertsonalizatua").classList="is-active";
 	document.getElementById("jota").classList="";
-	document.getElementById("pertsonalizatuaA").classList="title is-active";
-	document.getElementById("jotaA").classList="naranja-kolorea";
+	document.getElementById("pertsonalizatuaA").classList=" naranja-kolorea title is-active";
+	document.getElementById("jotaA").classList="has-text-dark";
 	document.getElementById("aukerarurakoDesk").innerHTML="Nahi dituzun pausuak aukeratu eta dantza pertsonalizatu bat eraiki!";
 	aukerakHasieratu();
 	checkAll(false);
@@ -239,8 +239,8 @@ function jotaDiv(){
 	perts=false;
 	document.getElementById("pertsonalizatua").classList="";
 	document.getElementById("jota").classList="is-active";
-	document.getElementById("pertsonalizatuaA").classList="naranja-kolorea";
-	document.getElementById("jotaA").classList="title is-active";
+	document.getElementById("pertsonalizatuaA").classList="has-text-dark";
+	document.getElementById("jotaA").classList=" naranja-kolorea title is-active";
 	document.getElementById("aukerarurakoDesk").innerHTML="Pausu talde bakoitzetik (A-B-C) aukera bat aukeratu eta dantzan hasi!";
 	aukerakHasieratu();
 	notiEzkutatu();

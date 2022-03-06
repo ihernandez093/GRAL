@@ -50,6 +50,9 @@ const full=document.querySelector('.full');
 const mute=document.querySelector('.mute');
 const muteIcon = document.getElementById("muteIcon");
 var ixildu=0;
+var loopeatu=false;
+var abiaadura_aukeratuta=false;
+var countdown_aukeratuta=false;
 var audioLuzeera=0;
 var bideoMomentua=0;
 var audioListaEzkutatuta=0;
@@ -83,17 +86,32 @@ var elm = 0;
 
 //play.addEventListener('click', playPause);
 
+
+function countdown_balioa_aldatu(){
+	
+	if(countdown_aukeratuta){
+		countdown_aukeratuta=false;
+	}else{
+		countdown_aukeratuta=true;
+	}
+	console.log("countdown_aukeratuta:"+countdown_aukeratuta);
+}
+
+
 function playPause(){
-	var countdown=document.getElementById("countdownId");
-	if((countdown.checked)&&(media.paused)){
+	console.log("countdown:"+countdown_aukeratuta+" media.paused:"+media.paused);
+	setAbiadura();
+	if((countdown_aukeratuta)&&(media.paused)){
 		var timeleft = document.getElementById("countdownValue").value;
 		var downloadTimer = setInterval(function(){
 		  if(timeleft <= 0){
 		    clearInterval(downloadTimer);
 		    document.getElementById("countdownText").innerHTML = "";
+			document.getElementById("countdownText2").innerHTML = "";
 		    playPauseMedia();
 		  } else {
 		    document.getElementById("countdownText").innerHTML = timeleft;
+			document.getElementById("countdownText2").innerHTML = timeleft;
 		  }
 		  timeleft -= 1;
 		}, 1000);
@@ -312,17 +330,24 @@ function windBackward() {
 		  timerBar.style.width = barLength + 'px';
 		}
 	
-abiadura.addEventListener('click',setAbiadura);
+abiadura.addEventListener('click',abiadura_aldatu);
+
+	function abiadura_aldatu(){
+		if(abiaadura_aukeratuta){
+			abiaadura_aukeratuta=false;
+		}
+		else{
+			abiaadura_aukeratuta=true;
+		}
+		setAbiadura()
+	}
 
 	function setAbiadura(){
 		
-		if (media.playbackRate==1){
+		if (abiaadura_aukeratuta){	
 			media.playbackRate=0.5;
 			abiaduraIcon.style.color="#EB6F25";
 			audioPlayer.playbackRate=0.5;			
-		} else if (media.playback==0.5){
-			media.playbackRate=5.0;
-			audioPlayer.playbackRate=5.0;
 		}else{
 			media.playbackRate=1;
 			abiaduraIcon.style.color="white";
@@ -338,10 +363,12 @@ loop.addEventListener('click',setLoop);
 		if(media.loop){
 			loopIcon.style.color="white";
 			media.loop=false;
+			loopeatu=false;
 			audioPlayer.loop=false;			
 		}else{
 			loopIcon.style.color="#EB6F25";
 			media.loop=true;
+			loopeatu=true;
 			audioPlayer.loop=true;
 			
 		}
@@ -786,6 +813,9 @@ function aldatuAudio(balioa){
 	if(!perts){
 		audioPlayer.muted=false;
 	}
+	abiaadura_aukeratuta=false;
+	countdown_aukeratuta=false;
+	setAbiadura();
 }
 
 function entzun(balioa){
@@ -1007,10 +1037,16 @@ media.addEventListener("timeupdate", function(){
     // check whether we have passed 5 minutes,
     // current time is given in seconds
 	if(!perts){
-		if(this.currentTime >= (denborak[hasierak.indexOf(balioak[elm][0])][1]) ) {
-			audioPlayer.pause();
-	        hurrengoaB();
-	    }
+		
+			if(this.currentTime >= (denborak[hasierak.indexOf(balioak[elm][0])][1]) ) {
+				audioPlayer.pause();
+				hurrengoaB();
+				if(loopeatu){
+					aurrekoaB();
+				}
+				setAbiadura();
+			}
+		
 	}    
 });
 
